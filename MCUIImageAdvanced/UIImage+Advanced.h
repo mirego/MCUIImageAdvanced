@@ -1,6 +1,6 @@
 //
 //  UIImage+Advanced.h
-//  UIImageAdvanced
+//  MCUIImageAdvanced
 //
 //  Created by Simon Audet on 10-08-03.
 //  Copyright (c) 2012 Mirego Inc. All rights reserved.

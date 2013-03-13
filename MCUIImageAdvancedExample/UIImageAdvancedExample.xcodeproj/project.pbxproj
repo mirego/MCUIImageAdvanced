@@ -18,14 +18,12 @@
 		09ABD55C16E8E7A100290BB3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ABD55B16E8E7A100290BB3 /* Default-568h@2x.png */; };
 		09ABD55F16E8E7A100290BB3 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09ABD55D16E8E7A100290BB3 /* MainStoryboard.storyboard */; };
 		09ABD56216E8E7A100290BB3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ABD56116E8E7A100290BB3 /* ViewController.m */; };
-		09ABD57316E8E7D800290BB3 /* ShrinkPNG.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ABD56C16E8E7D800290BB3 /* ShrinkPNG.m */; };
-		09ABD57416E8E7D800290BB3 /* UIImage+Advanced.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ABD56E16E8E7D800290BB3 /* UIImage+Advanced.m */; };
-		09ABD57516E8E7D800290BB3 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ABD57016E8E7D800290BB3 /* UIImage+ProportionalFill.m */; };
-		09ABD57616E8E7D800290BB3 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ABD57216E8E7D800290BB3 /* UIImage+Tint.m */; };
 		09ABD57816E8E97300290BB3 /* CharlieBrown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09ABD57716E8E97300290BB3 /* CharlieBrown@2x.png */; };
+		1E780F8C68FE40EF9DAB0BE2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EE57EBDBB645E7B9036837 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00EE57EBDBB645E7B9036837 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		09ABD54216E8E7A000290BB3 /* UIImageAdvancedExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIImageAdvancedExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09ABD54516E8E7A000290BB3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		09ABD54716E8E7A000290BB3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -42,15 +40,8 @@
 		09ABD55E16E8E7A100290BB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		09ABD56016E8E7A100290BB3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		09ABD56116E8E7A100290BB3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		09ABD56B16E8E7D800290BB3 /* ShrinkPNG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShrinkPNG.h; sourceTree = "<group>"; };
-		09ABD56C16E8E7D800290BB3 /* ShrinkPNG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShrinkPNG.m; sourceTree = "<group>"; };
-		09ABD56D16E8E7D800290BB3 /* UIImage+Advanced.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Advanced.h"; sourceTree = "<group>"; };
-		09ABD56E16E8E7D800290BB3 /* UIImage+Advanced.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Advanced.m"; sourceTree = "<group>"; };
-		09ABD56F16E8E7D800290BB3 /* UIImage+ProportionalFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ProportionalFill.h"; sourceTree = "<group>"; };
-		09ABD57016E8E7D800290BB3 /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
-		09ABD57116E8E7D800290BB3 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tint.h"; sourceTree = "<group>"; };
-		09ABD57216E8E7D800290BB3 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tint.m"; sourceTree = "<group>"; };
 		09ABD57716E8E97300290BB3 /* CharlieBrown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CharlieBrown@2x.png"; sourceTree = SOURCE_ROOT; };
+		2F39A8AC2F8846AA8E4A9A53 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +52,7 @@
 				09ABD54616E8E7A000290BB3 /* UIKit.framework in Frameworks */,
 				09ABD54816E8E7A000290BB3 /* Foundation.framework in Frameworks */,
 				09ABD54A16E8E7A000290BB3 /* CoreGraphics.framework in Frameworks */,
+				1E780F8C68FE40EF9DAB0BE2 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,10 +62,10 @@
 		09ABD53916E8E7A000290BB3 = {
 			isa = PBXGroup;
 			children = (
-				09ABD56A16E8E7D800290BB3 /* UIImageAdvanced */,
 				09ABD54B16E8E7A000290BB3 /* UIImageAdvancedExample */,
 				09ABD54416E8E7A000290BB3 /* Frameworks */,
 				09ABD54316E8E7A000290BB3 /* Products */,
+				2F39A8AC2F8846AA8E4A9A53 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,6 +83,7 @@
 				09ABD54516E8E7A000290BB3 /* UIKit.framework */,
 				09ABD54716E8E7A000290BB3 /* Foundation.framework */,
 				09ABD54916E8E7A000290BB3 /* CoreGraphics.framework */,
+				00EE57EBDBB645E7B9036837 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -123,22 +116,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		09ABD56A16E8E7D800290BB3 /* UIImageAdvanced */ = {
-			isa = PBXGroup;
-			children = (
-				09ABD56B16E8E7D800290BB3 /* ShrinkPNG.h */,
-				09ABD56C16E8E7D800290BB3 /* ShrinkPNG.m */,
-				09ABD56D16E8E7D800290BB3 /* UIImage+Advanced.h */,
-				09ABD56E16E8E7D800290BB3 /* UIImage+Advanced.m */,
-				09ABD56F16E8E7D800290BB3 /* UIImage+ProportionalFill.h */,
-				09ABD57016E8E7D800290BB3 /* UIImage+ProportionalFill.m */,
-				09ABD57116E8E7D800290BB3 /* UIImage+Tint.h */,
-				09ABD57216E8E7D800290BB3 /* UIImage+Tint.m */,
-			);
-			name = UIImageAdvanced;
-			path = ../UIImageAdvanced;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -149,6 +126,7 @@
 				09ABD53E16E8E7A000290BB3 /* Sources */,
 				09ABD53F16E8E7A000290BB3 /* Frameworks */,
 				09ABD54016E8E7A000290BB3 /* Resources */,
+				0F4F04D67C9D425DBFFB3996 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -201,6 +179,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F4F04D67C9D425DBFFB3996 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		09ABD53E16E8E7A000290BB3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -209,10 +204,6 @@
 				09ABD55216E8E7A000290BB3 /* main.m in Sources */,
 				09ABD55616E8E7A000290BB3 /* AppDelegate.m in Sources */,
 				09ABD56216E8E7A100290BB3 /* ViewController.m in Sources */,
-				09ABD57316E8E7D800290BB3 /* ShrinkPNG.m in Sources */,
-				09ABD57416E8E7D800290BB3 /* UIImage+Advanced.m in Sources */,
-				09ABD57516E8E7D800290BB3 /* UIImage+ProportionalFill.m in Sources */,
-				09ABD57616E8E7D800290BB3 /* UIImage+Tint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +287,7 @@
 		};
 		09ABD56616E8E7A100290BB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F39A8AC2F8846AA8E4A9A53 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIImageAdvancedExample/UIImageAdvancedExample-Prefix.pch";
@@ -307,6 +299,7 @@
 		};
 		09ABD56716E8E7A100290BB3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F39A8AC2F8846AA8E4A9A53 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIImageAdvancedExample/UIImageAdvancedExample-Prefix.pch";
@@ -335,6 +328,7 @@
 				09ABD56716E8E7A100290BB3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

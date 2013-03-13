@@ -12,6 +12,4 @@
 - (UIImage *)imageTintedWithColor:(UIColor *)color;
 - (UIImage *)imageTintedWithColor:(UIColor *)color fraction:(CGFloat)fraction;
 
-- (UIImage *)imageWithTintColor:(UIColor *)color blendMode:(CGBlendMode)blendMode;
-
 @end
