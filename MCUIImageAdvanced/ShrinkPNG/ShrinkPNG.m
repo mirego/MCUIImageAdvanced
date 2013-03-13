@@ -1,6 +1,6 @@
 //
 //  ShrinkPNG.m
-//  MCImageHelper
+//  MCUIImageAdvanced
 //
 //  Created by Francois Lambert on 11-12-13.
 //  Copyright (c) 2012 Mirego Inc. All rights reserved.

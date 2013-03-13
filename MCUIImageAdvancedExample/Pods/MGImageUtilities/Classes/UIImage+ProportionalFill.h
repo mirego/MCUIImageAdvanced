@@ -17,7 +17,6 @@ typedef enum {
 } MGImageResizingMethod;
 
 - (UIImage *)imageToFitSize:(CGSize)size method:(MGImageResizingMethod)resizeMethod;
-- (UIImage *)imageToFitSize:(CGSize)size method:(MGImageResizingMethod)resizeMethod padding:(CGFloat)padding shadowOffset:(CGSize)shadowOffset blur:(CGFloat)blur color:(UIColor *)color;
 - (UIImage *)imageCroppedToFitSize:(CGSize)size; // uses MGImageResizeCrop
 - (UIImage *)imageScaledToFitSize:(CGSize)size; // uses MGImageResizeScale
 

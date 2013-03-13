@@ -1,0 +1,18 @@
+
+PODS:
+- MCUIImageAdvanced (0.1.1):
+  - MGImageUtilities (HEAD)
+- MGImageUtilities (HEAD based on 0.0.1)
+
+DEPENDENCIES:
+- MCUIImageAdvanced (from `..')
+
+EXTERNAL SOURCES:
+  MCUIImageAdvanced:
+    :local: ..
+
+SPEC CHECKSUMS:
+  MCUIImageAdvanced: 0e79d76470b794a738f53938edce70f53fdb0b56
+  MGImageUtilities: ab3580f2161b10f8a41331baea87aaafbd688950
+
+COCOAPODS: 0.16.4
