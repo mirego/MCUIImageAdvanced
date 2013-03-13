@@ -5,8 +5,8 @@ Pod::Spec.new do |s|
   s.summary  = 'Advanced and powerful functionality enhancements to UIImage.'
   s.homepage = 'https://github.com/mirego/MCUIImageAdvanced.iOS'
   s.authors  = { 'Mirego, Inc.' => 'info@mirego.com' }
-  s.source   = { :git => 'https://github.com/mirego/MCUIImageAdvanced.iOS.git', :tag => '0.1.1' }
-  s.source_files = 'MCUIImageAdvanced/*.{h,m}'
+  s.source   = { :git => 'https://github.com/mirego/MCUIImageAdvanced.iOS.git', :tag => s.version.to_s }
+  s.source_files = 'MCUIImageAdvanced/*.{h,m}', 'MCUIImageAdvanced/ShrinkPNG/*.{h,m}'
   s.requires_arc = true
   
   s.platform = :ios, '5.0'
