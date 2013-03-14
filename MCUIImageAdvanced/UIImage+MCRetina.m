@@ -1,12 +1,12 @@
 //
-//  UIImage+Advanced.m
+//  UIImage+MCRetina.m
 //  MCUIImageAdvanced
 //
 //  Created by Simon Audet on 10-08-03.
 //  Copyright (c) 2012 Mirego Inc. All rights reserved.
 //
 
-#import "UIImage+Advanced.h"
+#import "UIImage+MCRetina.h"
 #import "UIImage+ProportionalFill.h"
 #import "ShrinkPNG.h"
 
@@ -15,254 +15,20 @@
 #include <mach/mach.h>
 #include <mach/mach_host.h>
 
-@implementation UIImage(Advanced)
+@implementation UIImage (MCRetina)
 
-/////////////////////////////////////////////////////
-#pragma mark methods resizing images
-/////////////////////////////////////////////////////
-- (UIImage*)resizedImageToSize:(CGSize)size {
-    return [self resizedImageToSize:size opaque:NO];
-}
-
-- (UIImage*)resizedImageToSize:(CGSize)size opaque:(BOOL)opaque {
-    if (UIGraphicsBeginImageContextWithOptions)
-        UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0);
-    else
-        UIGraphicsBeginImageContext(size);
-    
-    [self drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    
-    UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();    
-    return image;
-}
-
-- (UIImage*)resizedImageToSize:(CGSize)size opaque:(BOOL)opaque inSize:(CGSize)inSize {
-    return [self resizedImageToSize:size opaque:opaque inSize:inSize backgroundColor:nil];
-}
-
-- (UIImage*)resizedImageToSize:(CGSize)size opaque:(BOOL)opaque inSize:(CGSize)inSize backgroundColor:(UIColor *)backgroundColor {
-    return [self resizedImageToSize:size opaque:opaque inSize:inSize backgroundColor:backgroundColor foregroundColor:nil];
-}
-
-- (UIImage*)resizedImageToSize:(CGSize)size opaque:(BOOL)opaque inSize:(CGSize)inSize backgroundColor:(UIColor *)backgroundColor foregroundColor:(UIColor *)foregroundColor {
-    if (size.width <= 0 || size.height <= 0 || inSize.width <= 0 || inSize.height <= 0)
-        return nil;
-    
-    if (UIGraphicsBeginImageContextWithOptions)
-        UIGraphicsBeginImageContextWithOptions(inSize, opaque, 0.0);
-    else
-        UIGraphicsBeginImageContext(inSize);
-    
-    if (opaque == YES) {
-        CGContextRef currentContext = UIGraphicsGetCurrentContext();
-        CGFloat alpha = CGColorGetAlpha([backgroundColor CGColor]);
-        if (alpha > 0)
-            CGContextSetFillColorWithColor(currentContext, [backgroundColor CGColor]);
-        else
-            CGContextSetFillColorWithColor(currentContext, [[UIColor whiteColor] CGColor]);
-        CGContextFillRect(currentContext, CGRectMake(0, 0, inSize.width, inSize.height));
-    }
-    
-    [self drawInRect:CGRectMake(floorf((inSize.width - size.width) * 0.5), floorf((inSize.height - size.height) * 0.5), size.width, size.height)];
-    
-    if (foregroundColor) {
-        CGContextRef currentContext = UIGraphicsGetCurrentContext();
-        CGContextSetFillColorWithColor(currentContext, [foregroundColor CGColor]);
-        CGContextFillRect(currentContext, CGRectMake(0, 0, inSize.width, inSize.height));
-    }
-    
-    UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();    
-    return image;
-}
-
-- (UIImage*)croppedImageToRect:(CGRect)rect
++ (UIImage*)imageNamedRetina:(NSString *)name
 {
-    //create a context to do our clipping in
-    if (UIGraphicsBeginImageContextWithOptions)
-        UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0); // 0.0 = scale factor to support retina display
-    else
-        UIGraphicsBeginImageContext(rect.size);
-    
-    CGContextRef currentContext = UIGraphicsGetCurrentContext();
-    
-    //create a rect with the size we want to crop the image to
-    //the X and Y here are zero so we start at the beginning of our
-    //newly created context
-    CGRect clippedRect = CGRectMake(0, 0, rect.size.width, rect.size.height);
-    CGContextClipToRect( currentContext, clippedRect);
-    
-    //create a rect equivalent to the full size of the image
-    //offset the rect by the X and Y we want to start the crop
-    //from in order to cut off anything before them
-    CGRect drawRect = CGRectMake(rect.origin.x * -1,
-                                 rect.origin.y * -1,
-                                 self.size.width,
-                                 self.size.height);
-    
-    //draw the image to our clipped context using our offset rect
-    //CGContextDrawImage(currentContext, drawRect, imageToCrop.CGImage);
-    [self drawInRect:drawRect];
-    
-    //pull the image from our cropped context
-    UIImage *cropped = UIGraphicsGetImageFromCurrentImageContext();
-    
-    //pop the context to get back to the default
-    UIGraphicsEndImageContext();
-    
-    //Note: this is autoreleased
-    return cropped;
-}
-
-- (UIImage *)imageWithRoundedCornersRadius:(CGFloat)radius {
-    return [self imageWithRoundedCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(radius, radius)];
-}
-
-- (UIImage *)imageWithRoundedCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii {
-    if (self.size.width <= 0 || self.size.width <= 0)
-        return self;
-    
-    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
-    if (UIGraphicsBeginImageContextWithOptions)
-        UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0);
-    else
-        UIGraphicsBeginImageContext(rect.size);
-    
-    [[UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:corners cornerRadii:cornerRadii] addClip];
-    [self drawInRect:rect];
-    
-    UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
-}
-
-//////////////////////////////////////////////////////////////
-#pragma mark Image and color blending
-//////////////////////////////////////////////////////////////
-+ (UIImage*)blendedImageWithImage:(UIImage*)image
-                           layers:(NSArray*)layers
-                        blendMode:(CGBlendMode)blendMode {
-    return [self blendedImageWithImage:image
-                                layers:layers
-                            blendModes:nil
-                      defaultBlendMode:blendMode];
-}
-
-+ (UIImage*)blendedImageWithImage:(UIImage*)image
-                           layers:(NSArray*)layers
-                       blendModes:(NSArray*)blendModes
-                 defaultBlendMode:(CGBlendMode)defaultBlendMode {
-    if (image == nil) {
-        return nil;
-    }
-    
-    // Create the rect based on the given image
-    CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
-    
-    // Create an image context used to create an image
-    if (UIGraphicsBeginImageContextWithOptions)
-        UIGraphicsBeginImageContextWithOptions(image.size, NO, 0.0); // 0.0 = scale factor to support the native device scaling (retina display support)
-    else
-        UIGraphicsBeginImageContext(image.size);
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    [self blendedImageInContext:context
-                       withRect:rect
-                          image:image
-                         layers:layers
-                     blendModes:blendModes
-               defaultBlendMode:defaultBlendMode];
-    
-    // Create an AUTORELEASE image from the drawing context
-    UIImage* blendedImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // Pop the context to get back to the default
-    UIGraphicsEndImageContext();
-    
-    return blendedImage;
-}
-
-+ (void)blendedImageInContext:(CGContextRef)context
-                     withRect:(CGRect)rect
-                        image:(UIImage*)image
-                       layers:(NSArray*)layers
-                   blendModes:(NSArray*)blendModes
-             defaultBlendMode:(CGBlendMode)defaultBlendMode {
-    if (context == nil || image == nil) {
-        return;
-    }
-    
-    // Save the given context
-    CGContextSaveGState(context);
-    
-    // Setup the context to invert everything drawn on the Y axis because the UIImage and CGImage have opposite y axis.
-    CGContextTranslateCTM(context, 0.0f, CGRectGetHeight(rect));
-    CGContextScaleCTM(context, 1.0f, -1.0f);
-    
-    // Draw main image
-    if (image != nil) {
-        CGContextDrawImage(context, rect, image.CGImage);
-    }
-    
-    // Loop through all layers to draw them all
-    if (layers != nil) {
-        for (NSUInteger i = 0; i < layers.count; i++) {
-            // Blend mode
-            if (blendModes != nil && i < blendModes.count) {
-                CGContextSetBlendMode (context, [[blendModes objectAtIndex:i] intValue]);
-            } else {
-                CGContextSetBlendMode (context, defaultBlendMode);
-            }
-            
-            id layer = [layers objectAtIndex:i];
-            if ([layer isKindOfClass:[UIColor class]]) {
-                // Draw UIColor
-                UIColor* layerColor = layer;
-                CGContextSetFillColorWithColor(context, layerColor.CGColor);      
-                CGContextFillRect (context, rect);
-            } else if ([layer isKindOfClass:[UIImage class]]) {
-                // Draw UIImage
-                UIImage* layerImage = layer;
-                CGContextDrawImage(context, rect, layerImage.CGImage);
-            }
-        }
-    }
-    
-    // Restore the original drawing context
-    CGContextRestoreGState(context);
-}
-
-+ (CGSize)proportionalSizeForSize:(CGSize)imageSize scaledToSize:(CGSize)targetSize {
-    if (CGSizeEqualToSize(imageSize, targetSize) == NO) {
-        CGFloat widthFactor = targetSize.width / imageSize.width;
-        CGFloat heightFactor = targetSize.height / imageSize.height;
-        CGFloat scaleFactor = (widthFactor < heightFactor) ? widthFactor : heightFactor;
-        targetSize = CGSizeMake(ceilf(imageSize.width * scaleFactor), ceilf(imageSize.height * scaleFactor));
-    }
-    
-    return targetSize;
-}
-
-- (CGSize)proportionalSizeScaledToSize:(CGSize)targetSize {
-    return [UIImage proportionalSizeForSize:[self size] scaledToSize:targetSize];
-}
-
-+ (UIImage*)imageNamedNoCache:(NSString *)name {
-    return [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:nil]];
-}
-
-+ (UIImage*)imageNamedRetina:(NSString *)name {
     return [self imageNamedRetina:name useMemoryCache:YES];
 }
 
-+ (UIImage*)imageNamedRetina:(NSString *)name useMemoryCache:(BOOL)useMemoryCache {
++ (UIImage*)imageNamedRetina:(NSString *)name useMemoryCache:(BOOL)useMemoryCache
+{
     return [self imageNamedRetina:name useMemoryCache:useMemoryCache logLoadError:NO];
 }
 
-+ (natural_t)totalMemory {
++ (natural_t)totalMemory
+{
     mach_port_t host_port = mach_host_self();
     mach_msg_type_number_t host_size = sizeof(vm_statistics_data_t) / sizeof(integer_t);
     vm_size_t pagesize; host_page_size(host_port, &pagesize);
@@ -279,7 +45,8 @@
     return mem_total;
 }
 
-+ (NSString*)mcCleanImageName:(NSString *)name {
++ (NSString*)mcCleanImageName:(NSString *)name
+{
     // If path extension is PNG, remove it from key
     NSString* pathExtension = [name pathExtension];
     if ([[pathExtension lowercaseString] isEqualToString:@"png"])
@@ -307,7 +74,8 @@
     return name;
 }
 
-+ (UIImage*)imageNamedRetina:(NSString *)name useMemoryCache:(BOOL)useMemoryCache logLoadError:(BOOL)logLoadError {
++ (UIImage*)imageNamedRetina:(NSString *)name useMemoryCache:(BOOL)useMemoryCache logLoadError:(BOOL)logLoadError
+{
     // If name is empty, return nil
     name = [self mcCleanImageName:name];
     if ((name == nil) || [name isEqualToString:@""])
@@ -413,7 +181,8 @@
     return image;
 }
 
-+ (void)imageNamedRetinaWarmupWithProgressBlock:(void (^)(NSString* imageName, NSUInteger index, NSUInteger count))progressBlock {
++ (void)imageNamedRetinaWarmupWithProgressBlock:(void (^)(NSString* imageName, NSUInteger index, NSUInteger count))progressBlock
+{
     NSInteger systemVersion = [[[UIDevice currentDevice] systemVersion] integerValue];
     NSInteger scale = (systemVersion >= 4) ? [[UIScreen mainScreen] scale] : 1;
     if (scale > 1) {
@@ -468,11 +237,13 @@
     });
 }
 
-+ (NSString *)pathForNonRetinaResource:(NSString *)name ofType:(NSString *)type {
++ (NSString *)pathForNonRetinaResource:(NSString *)name ofType:(NSString *)type
+{
     return [self pathForNonRetinaResource:name ofType:type image:NULL];
 }
 
-+ (NSString *)pathForNonRetinaResource:(NSString *)name ofType:(NSString *)type image:(UIImage **)image {
++ (NSString *)pathForNonRetinaResource:(NSString *)name ofType:(NSString *)type image:(UIImage **)image
+{
     UIImage* shrinkedImage = nil;
     
     // Load @1x file
@@ -566,19 +337,23 @@
 }
 
 
-+ (UIImage *)imageNamedRetina:(NSString *)name tintColor:(UIColor *)tintColor {
++ (UIImage *)imageNamedRetina:(NSString *)name tintColor:(UIColor *)tintColor
+{
     return [self imageNamedRetina:name tintColor:tintColor overlayBlendMode:kCGBlendModeOverlay overlayName:[name stringByAppendingString:@"_overlay"] shadowName:[name stringByAppendingString:@"_shadow"]];
 }
 
-+ (UIImage *)imageNamedRetina:(NSString *)name tintColor:(UIColor *)tintColor overlayBlendMode:(CGBlendMode)overlayBlendMode {
++ (UIImage *)imageNamedRetina:(NSString *)name tintColor:(UIColor *)tintColor overlayBlendMode:(CGBlendMode)overlayBlendMode
+{
     return [self imageNamedRetina:name tintColor:tintColor overlayBlendMode:overlayBlendMode overlayName:[name stringByAppendingString:@"_overlay"] shadowName:[name stringByAppendingString:@"_shadow"]];
 }
 
-+ (UIImage *)imageNamedRetina:(NSString *)name tintColor:(UIColor *)tintColor overlayName:(NSString *)overlayName shadowName:(NSString *)shadowName {
++ (UIImage *)imageNamedRetina:(NSString *)name tintColor:(UIColor *)tintColor overlayName:(NSString *)overlayName shadowName:(NSString *)shadowName
+{
     return [self imageNamedRetina:name tintColor:tintColor overlayBlendMode:kCGBlendModeOverlay overlayName:overlayName shadowName:shadowName];
 }
 
-+ (UIImage *)imageNamedRetina:(NSString *)name tintColor:(UIColor *)tintColor overlayBlendMode:(CGBlendMode)overlayBlendMode overlayName:(NSString *)overlayName shadowName:(NSString *)shadowName {
++ (UIImage *)imageNamedRetina:(NSString *)name tintColor:(UIColor *)tintColor overlayBlendMode:(CGBlendMode)overlayBlendMode overlayName:(NSString *)overlayName shadowName:(NSString *)shadowName
+{
     if (tintColor == nil) {
         tintColor = [UIColor whiteColor];
     }
@@ -636,11 +411,13 @@
     return image;
 }
 
-- (UIImage*)scaledImageFromScale:(CGFloat)fromScale {
+- (UIImage *)scaledImageFromScale:(CGFloat)fromScale
+{
     return [self scaledImageFromScale:fromScale toScale:[[UIScreen mainScreen] scale]];
 }
 
-- (UIImage*)scaledImageFromScale:(CGFloat)fromScale toScale:(CGFloat)toScale {
+- (UIImage *)scaledImageFromScale:(CGFloat)fromScale toScale:(CGFloat)toScale
+{
     // If same scale, do nothing
     if (fromScale == toScale) {
         return self;
@@ -672,139 +449,6 @@
     }
     
     return image;
-}
-
-//////////////////////////////////////////////////////////////
-#pragma mark
-//////////////////////////////////////////////////////////////
-
-
-
-+ (UIImage *)gradientImageWithColors:(NSArray *)colors height:(CGFloat)height cornerRadius:(CGFloat)cornerRadius edgeInsets:(UIEdgeInsets)edgeInsets
-{
-    return [self gradientImageWithColors:colors height:height width:0.0 cornerRadius:cornerRadius edgeInsets:edgeInsets];
-}
-
-+ (UIImage *)gradientImageWithColors:(NSArray *)colors width:(CGFloat)width cornerRadius:(CGFloat)cornerRadius edgeInsets:(UIEdgeInsets)edgeInsets
-{
-    return [self gradientImageWithColors:colors height:0.0 width:width cornerRadius:cornerRadius edgeInsets:edgeInsets ];
-}
-
-+ (UIImage *)gradientImageWithColors:(NSArray *)colors height:(CGFloat)height width:(CGFloat)width cornerRadius:(CGFloat)cornerRadius edgeInsets:(UIEdgeInsets)edgeInsets
-{
-
-
-    static NSCache* gradientImageCache;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        gradientImageCache = [[NSCache alloc] init];
-        gradientImageCache.name = @"gradientImageCache";
-    });
-    
-    // Check if image was already created
-    NSString* gradientImageCacheKey = [NSString stringWithFormat:@"%@/%f/%f/%@", colors, height, cornerRadius, NSStringFromUIEdgeInsets(edgeInsets)];
-    UIImage* image = [gradientImageCache objectForKey:gradientImageCacheKey];
-    if (image == nil) {
-        // Create resizable image
-        CGSize size;
-        if (height > 0.0)
-        {
-            size = CGSizeMake(3 + (cornerRadius * 2) + (edgeInsets.left + edgeInsets.right), height);
-        }
-        else
-        {
-            size = CGSizeMake(width , 3 + (cornerRadius * 2) + (edgeInsets.top + edgeInsets.bottom));
-        }
-        CGRect rect = UIEdgeInsetsInsetRect(CGRectMake(0, 0, size.width, size.height), edgeInsets);
-        
-        if (UIGraphicsBeginImageContextWithOptions)
-            UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-        else
-            UIGraphicsBeginImageContext(size);
-        
-        // Mask context to create rounded corners
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextSaveGState(context);
-        UIBezierPath* bezierPath = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:cornerRadius];
-        [bezierPath addClip];
-        
-        // Convert UIColor array to CGColor array
-        NSMutableArray* CGColors = [NSMutableArray arrayWithCapacity:[colors count]];
-        for (UIColor* color in colors) {
-            [CGColors addObject:(id)[color CGColor]];
-        }
-        
-        // Draw the gradient
-        CGGradientRef gradient = CGGradientCreateWithColors(NULL, (__bridge CFArrayRef)CGColors, NULL);
-        CGContextClipToRect(context, rect);
-        if (height > 0.0)
-        {
-            CGContextDrawLinearGradient(context, gradient, CGPointMake(0, 0), CGPointMake(0, CGRectGetMaxY(rect)), kCGGradientDrawsAfterEndLocation);
-        }
-        else
-        {
-            CGContextDrawLinearGradient(context, gradient, CGPointMake(0, 0), CGPointMake(CGRectGetMaxX(rect), 0), kCGGradientDrawsAfterEndLocation);
-        }
-        CGGradientRelease(gradient);
-        
-        // Make it auto-resizable
-        image = UIGraphicsGetImageFromCurrentImageContext();
-        image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0, edgeInsets.left + cornerRadius + 1, 0, edgeInsets.right + cornerRadius + 1)];
-        UIGraphicsEndImageContext();
-        
-        // Cache image
-        [gradientImageCache setObject:image forKey:gradientImageCacheKey];
-    }
-    
-    return image;
-}
-
-//////////////////////////////////////////////////////////////
-#pragma mark animated images
-//////////////////////////////////////////////////////////////
-+ (NSArray*)animationImagesWithPrefix:(NSString*)imagesPrefix
-                        imageQuantity:(NSInteger)imageQuantity {
-    return [self animationImagesWithPrefix:imagesPrefix imageQuantity:imageQuantity resizeImages:CGSizeZero mask:@"%i"];
-}
-
-+ (NSArray*)animationImagesWithPrefix:(NSString*)imagesPrefix
-                        imageQuantity:(NSInteger)imageQuantity
-                         resizeImages:(CGSize)resizeImages {
-    return [self animationImagesWithPrefix:imagesPrefix imageQuantity:imageQuantity resizeImages:resizeImages mask:@"%i"];
-}
-
-+ (NSArray*)animationImagesWithPrefix:(NSString*)imagesPrefix
-                        imageQuantity:(NSInteger)imageQuantity
-                         resizeImages:(CGSize)resizeImages
-                                 mask:(NSString*)mask {
-    return [self animationImagesWithPrefix:imagesPrefix imageQuantity:imageQuantity resizeImages:resizeImages mask:mask startingIndex:0];
-}
-
-+ (NSArray *)animationImagesWithPrefix:(NSString *)imagesPrefix
-                         imageQuantity:(NSInteger)imageQuantity
-                          resizeImages:(CGSize)resizeImages
-                                  mask:(NSString *)mask
-                         startingIndex:(NSInteger)startingIndex {
-    if (imageQuantity <= 0)
-        return nil;
-    
-    // Load the images from disk
-    NSMutableArray* imageArray = [[NSMutableArray alloc] initWithCapacity:imageQuantity];
-    for (NSInteger index = startingIndex; index < (imageQuantity + startingIndex); index++) {
-        // Create image path from mask, load image
-        NSString* imageName = [imagesPrefix stringByAppendingFormat:mask, index];
-        UIImage* image = [UIImage imageNamedRetina:imageName];
-        
-        // Resize image if requested to
-        // FIXME: Cache resized copy
-        if ((resizeImages.width > 0) && (resizeImages.height > 0)) {
-            image = [image imageScaledToFitSize:resizeImages];
-        }
-        
-        [imageArray addObject:image];
-    }
-    
-    return imageArray;
 }
 
 @end
