@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "UIImage+Advanced.h"
+#import "UIImage+MCRetina.h"
 
 @interface ViewController ()
 
