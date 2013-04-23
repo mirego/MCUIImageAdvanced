@@ -1,1 +1,0 @@
-../../../../MCUIImageAdvanced/ShrinkPNG/ShrinkPNG.h
