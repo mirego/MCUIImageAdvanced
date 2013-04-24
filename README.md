@@ -1,4 +1,6 @@
-# MCUIImageAdvanced - Advanced and powerful functionality enhancements to UIImage
+# MCUIImageAdvanced - UIImage advanced
+
+Utility methods for [`UIImage`](http://developer.apple.com/library/ios/#documentation/UIKit/Reference/UIImage_Class/Reference/Reference.html).
 
 ## Using
 
