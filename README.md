@@ -12,7 +12,7 @@ An easy way of creating a `NSArray` of `UIImage` for annimation for `UIImageView
 
 #import 'UIImage+MCAdvanced.h'
 
-- (void) funWithAnimations
+- (void)funWithAnimations
 {
   // UIImage array animations to use with the UIImageView setAnimationImages:
   // expects file name to be numbered sequentialy.
@@ -39,7 +39,7 @@ Blend `UIImage` and `UIColor` together using different [`CGBlendMode`](https://d
 ```objective-c
 #import 'UIImage+MCAdvanced.h'
 
-- (void) funWithBlending
+- (void)funWithBlending
 {
 
   // Blend images
@@ -103,7 +103,7 @@ If you're using [`CocoaPods`](http://cocoapods.org/), there's nothing simpler.
 Add the following to your [`Podfile`](http://docs.cocoapods.org/podfile.html)
 and run `pod install`
 
-```
+```ruby
 pod 'MCUIImageAdvanced', :git => 'https://github.com/mirego/MCUIImageAdvanced.git'
 ```
 
