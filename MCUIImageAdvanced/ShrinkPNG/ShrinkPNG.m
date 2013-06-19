@@ -91,15 +91,15 @@ unsigned char *CreateBytesFromImage(CGImageRef image)
 	return imageData;
 }
 
-CGImageRef CreateImageFromBytes(unsigned char *data, size_t width, size_t height);
-CGImageRef CreateImageFromBytes(unsigned char *data, size_t width, size_t height) {
+CGImageRef CreateImageFromBytes(unsigned char *data, size_t width, size_t height, unsigned int withAlpha);
+CGImageRef CreateImageFromBytes(unsigned char *data, size_t width, size_t height, unsigned int withAlpha) {
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
 	if (colorSpace == NULL) {
 		NSLog(@"Cannot create color space");
 		return NULL;
 	}
     
-	CGContextRef context = CGBitmapContextCreate(data, width, height, 8, width * 4, colorSpace, kCGImageAlphaPremultipliedFirst);
+	CGContextRef context = CGBitmapContextCreate(data, width, height, 8, width * 4, colorSpace, withAlpha ? kCGImageAlphaPremultipliedFirst : kCGImageAlphaNoneSkipFirst);
 	CGColorSpaceRelease(colorSpace);
     
 	if (context == NULL) {
@@ -187,7 +187,9 @@ unsigned char *ShrinkBitmapData(unsigned char *inData, size_t width, size_t heig
 			free(inData);
             
 			if (outData != NULL) {
-				CGImageRef outImage = CreateImageFromBytes(outData, width / 2, height / 2);
+				CGImageAlphaInfo alpha = CGImageGetAlphaInfo(inImage);
+				unsigned int hasAlpha = (alpha == kCGImageAlphaFirst || alpha == kCGImageAlphaLast || alpha == kCGImageAlphaPremultipliedFirst || alpha == kCGImageAlphaPremultipliedLast);
+				CGImageRef outImage = CreateImageFromBytes(outData, width / 2, height / 2, hasAlpha);
 				free(outData);
                 return outImage;
 			}
