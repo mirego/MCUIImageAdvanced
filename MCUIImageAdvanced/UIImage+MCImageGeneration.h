@@ -36,5 +36,6 @@
 /**
  */
 + (UIImage *)generateImageWithSize:(CGSize)size color:(UIColor *)color;
++ (UIImage *)generateImageWithSize:(CGSize)size color:(UIColor *)color opaque:(BOOL)opaque;
 
 @end

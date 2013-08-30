@@ -35,7 +35,12 @@
 
 + (UIImage *)generateImageWithSize:(CGSize)size color:(UIColor *)color
 {
-    UIGraphicsBeginImageContext(size);
+    return [UIImage generateImageWithSize:size color:color opaque:YES];
+}
+
++ (UIImage *)generateImageWithSize:(CGSize)size color:(UIColor *)color opaque:(BOOL)opaque
+{
+    UIGraphicsBeginImageContextWithOptions(size, opaque, [UIScreen mainScreen].scale);
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(currentContext, color.CGColor);
     CGContextFillRect(currentContext, CGRectMake(0.0f, 0.0f, size.width, size.height));
