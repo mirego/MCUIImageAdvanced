@@ -33,12 +33,12 @@
 
 @implementation UIImage (MCImageGeneration)
 
-+ (UIImage *)generateImageWithSize:(CGSize)size color:(UIColor *)color
++ (UIImage *)mc_generateImageOfSize:(CGSize)size color:(UIColor *)color
 {
     return [UIImage generateImageWithSize:size color:color opaque:YES];
 }
 
-+ (UIImage *)generateImageWithSize:(CGSize)size color:(UIColor *)color opaque:(BOOL)opaque
++ (UIImage *)mc_generateImageOfSize:(CGSize)size color:(UIColor *)color opaque:(BOOL)opaque
 {
     UIGraphicsBeginImageContextWithOptions(size, opaque, [UIScreen mainScreen].scale);
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
