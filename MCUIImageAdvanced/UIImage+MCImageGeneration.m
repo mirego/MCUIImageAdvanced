@@ -35,7 +35,7 @@
 
 + (UIImage *)mc_generateImageOfSize:(CGSize)size color:(UIColor *)color
 {
-    return [UIImage generateImageWithSize:size color:color opaque:YES];
+    return [UIImage mc_generateImageOfSize:size color:color opaque:YES];
 }
 
 + (UIImage *)mc_generateImageOfSize:(CGSize)size color:(UIColor *)color opaque:(BOOL)opaque
