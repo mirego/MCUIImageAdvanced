@@ -38,4 +38,8 @@
 + (UIImage *)mc_generateImageOfSize:(CGSize)size color:(UIColor *)color;
 + (UIImage *)mc_generateImageOfSize:(CGSize)size color:(UIColor *)color opaque:(BOOL)opaque;
 
+/**
+ */
++ (UIImage *)mc_generateCircleImageOfSize:(CGSize)size color:(UIColor *)color;
+
 @end
