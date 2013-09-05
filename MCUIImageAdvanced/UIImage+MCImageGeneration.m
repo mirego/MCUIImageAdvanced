@@ -49,4 +49,15 @@
     return resultImage;
 }
 
++ (UIImage *)mc_generateCircleImageOfSize:(CGSize)size color:(UIColor *)color
+{
+    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(currentContext, color.CGColor);
+    CGContextFillEllipseInRect(currentContext, CGRectMake(0.0f, 0.0f, size.width, size.height));
+    UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return resultImage;
+}
+
 @end
