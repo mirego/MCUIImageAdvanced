@@ -64,6 +64,26 @@ Blend `UIImage` and `UIColor` together using different [`CGBlendMode`](https://d
 }
 ```
 
+### Generating simple images
+
+Obtain simple `UIImage`s drawned with CoreGraphics
+
+```objective-c
+#import 'UIImage+MCAdvanced.h'
+
+- (void)funWithImageGeneration
+{
+  // Square opaque image
+  UIImage *redSquareImage = [UIImage mc_generateImageOfSize:CGSizeMake(100,100) color:[UIColor redcolor]];
+                                                  
+  // Square translucent image
+  UIImage *redTranslucentSquareImage = [UIImage mc_generateImageOfSize:CGSizeMake(100,100) color:[[UIColor redcolor] colorWithAlphaComponent:0.5f] opaque:NO];
+ 
+  // Circle image
+  UIImage *redCircleImage = [UIImage mc_generateCircleImageOfSize:CGSize(100,100) color:[UIColor redcolor]];  
+}
+```
+
 
 ### Retina and non-retina images (@2x)
 
