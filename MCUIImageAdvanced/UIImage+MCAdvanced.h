@@ -33,3 +33,4 @@
 #import "UIImage+MCBlending.h"
 #import "UIImage+MCRetina.h"
 #import "UIImage+MCRounded.h"
+#import "UIImage+MCImageGeneration.h"
