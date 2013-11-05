@@ -1,4 +1,7 @@
 # MCUIImageAdvanced - UIImage advanced
+[![Badge w/ Version](https://cocoapod-badges.herokuapp.com/v/MCUIImageAdvanced/badge.png)](https://cocoadocs.org/docsets/MCUIImageAdvanced)
+[![Badge w/ Platform](https://cocoapod-badges.herokuapp.com/p/MCUIImageAdvanced/badge.png)](https://cocoadocs.org/docsets/MCUIImageAdvanced)
+
 
 Utility methods for [`UIImage`](http://developer.apple.com/library/ios/#documentation/UIKit/Reference/UIImage_Class/Reference/Reference.html).
 
