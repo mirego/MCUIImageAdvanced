@@ -40,7 +40,7 @@
 
 + (UIImage *)mc_generateImageOfSize:(CGSize)size color:(UIColor *)color opaque:(BOOL)opaque
 {
-    if (CGSizeEqualToSize(size, CGSizeZero)) {
+    if (![UIImage isValidSize:size]) {
         return nil;
     }
     UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0f);
@@ -54,7 +54,7 @@
 
 + (UIImage *)mc_generateCircleImageOfSize:(CGSize)size color:(UIColor *)color
 {
-    if (CGSizeEqualToSize(size, CGSizeZero)) {
+    if (![UIImage isValidSize:size]) {
         return nil;
     }
     UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
@@ -64,6 +64,11 @@
     UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return resultImage;
+}
+
++ (BOOL)isValidSize:(CGSize)size
+{
+    return size.width > 0.0f && size.height > 0.0f;
 }
 
 @end
