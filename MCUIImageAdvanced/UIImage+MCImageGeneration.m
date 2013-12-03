@@ -40,7 +40,10 @@
 
 + (UIImage *)mc_generateImageOfSize:(CGSize)size color:(UIColor *)color opaque:(BOOL)opaque
 {
-    UIGraphicsBeginImageContextWithOptions(size, opaque, [UIScreen mainScreen].scale);
+    if (CGSizeEqualToSize(size, CGSizeZero)) {
+        return nil;
+    }
+    UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0f);
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(currentContext, color.CGColor);
     CGContextFillRect(currentContext, CGRectMake(0.0f, 0.0f, size.width, size.height));
@@ -51,7 +54,10 @@
 
 + (UIImage *)mc_generateCircleImageOfSize:(CGSize)size color:(UIColor *)color
 {
-    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+    if (CGSizeEqualToSize(size, CGSizeZero)) {
+        return nil;
+    }
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(currentContext, color.CGColor);
     CGContextFillEllipseInRect(currentContext, CGRectMake(0.0f, 0.0f, size.width, size.height));
