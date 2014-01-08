@@ -139,24 +139,24 @@
             if (userInterfaceIdiom == UIUserInterfaceIdiomPad) {
                 // Check for iPad specific retina+ and normal versions
                 if (imagePath == nil && scale >= 2)
-                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%dx~ipad", scale] ofType:type];
+                    imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"@%dx~ipad", scale] ofType:type];
                 if (imagePath == nil)
-                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingString:@"~ipad"] ofType:type];
+                    imagePath = [bundle pathForResource:[resource stringByAppendingString:@"~ipad"] ofType:type];
 
             } else if (userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
                 // Check for iPhone/iPod specific retina+ and normal versions
                 if (imagePath == nil && scale >= 2) {
                     if (height >= 568) { // iPhone 4 inch
-                        imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%dh@%dx~iphone", height, scale] ofType:type];
+                        imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"-%dh@%dx~iphone", height, scale] ofType:type];
 
                         if (imagePath == nil)
-                            imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%dh~iphone", height] ofType:type];
+                            imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"-%dh~iphone", height] ofType:type];
 
                     } else {
-                        imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%dx~iphone", scale] ofType:type];
+                        imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"@%dx~iphone", scale] ofType:type];
 
                         if (imagePath == nil)
-                            imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingString:@"~iphone"] ofType:type];
+                            imagePath = [bundle pathForResource:[resource stringByAppendingString:@"~iphone"] ofType:type];
                     }
                 }
             }
@@ -164,20 +164,20 @@
             // Check for retina+ and normal versions
             if (imagePath == nil && scale >= 2) {
                 if (height >= 568) { // iPhone 4 inch
-                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%dh@%dx", height, scale] ofType:type];
+                    imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"-%dh@%dx", height, scale] ofType:type];
                 }
 
                 if (imagePath == nil)
-                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%dx", scale] ofType:type];
+                    imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"@%dx", scale] ofType:type];
             }
 
             // Load resource "as is"
             if (imagePath == nil)
-                imagePath = [[NSBundle mainBundle] pathForResource:resource ofType:type];
+                imagePath = [bundle pathForResource:resource ofType:type];
 
             // Check for retina version and shrink it
             if (imagePath == nil) {
-                imagePath = [self pathForNonRetinaResource:resource ofType:type image:&image];
+                imagePath = [self pathForNonRetinaResource:resource ofType:type image:&image fromBundle:bundle];
             }
         }
 
@@ -272,23 +272,28 @@
 
 + (NSString *)pathForNonRetinaResource:(NSString *)name ofType:(NSString *)type image:(UIImage **)image
 {
+    return [self pathForNonRetinaResource:name ofType:type image:image fromBundle:[NSBundle mainBundle]];
+}
+
++ (NSString *)pathForNonRetinaResource:(NSString *)name ofType:(NSString *)type image:(UIImage **)image fromBundle:(NSBundle *)bundle
+{
     UIImage* shrinkedImage = nil;
 
     // Load @1x file
-    NSString* file = [[NSBundle mainBundle] pathForResource:name ofType:type];
+    NSString* file = [bundle pathForResource:name ofType:type];
     if (file != nil) {
         return file;
     }
 
     // Load @2x file
-    file = [[NSBundle mainBundle] pathForResource:[name stringByAppendingString:@"@2x"] ofType:type];
+    file = [bundle pathForResource:[name stringByAppendingString:@"@2x"] ofType:type];
     if (file != nil) {
         static NSString* resourcePath = nil;
         static NSString* cachePath = nil;
 
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            resourcePath = [[NSBundle mainBundle] resourcePath];
+            resourcePath = [bundle resourcePath];
             cachePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"imageNamedRetina"];
         });
 
