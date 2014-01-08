@@ -39,7 +39,11 @@
 
 /**
  */
-+ (UIImage *)imageNamedRetina:(NSString *)name useMemoryCache:(BOOL)useMemoryCache;
++ (UIImage *)imageNamedRetina:(NSString *)name fromBundle:(NSBundle *)bundle;
+
+/**
+ */
++ (UIImage *)imageNamedRetina:(NSString *)name fromBundle:(NSBundle *)bundle useMemoryCache:(BOOL)useMemoryCache;
 
 /**
  */

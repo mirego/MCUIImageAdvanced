@@ -42,12 +42,17 @@
 
 + (UIImage*)imageNamedRetina:(NSString *)name
 {
-    return [self imageNamedRetina:name useMemoryCache:YES];
+    return [self imageNamedRetina:name fromBundle:[NSBundle mainBundle]];
 }
 
-+ (UIImage*)imageNamedRetina:(NSString *)name useMemoryCache:(BOOL)useMemoryCache
++ (UIImage *)imageNamedRetina:(NSString *)name fromBundle:(NSBundle *)bundle
 {
-    return [self imageNamedRetina:name useMemoryCache:useMemoryCache logLoadError:NO];
+    return [self imageNamedRetina:name fromBundle:bundle useMemoryCache:YES];
+}
+
++ (UIImage*)imageNamedRetina:(NSString *)name fromBundle:(NSBundle *)bundle useMemoryCache:(BOOL)useMemoryCache
+{
+    return [self imageNamedRetina:name fromBundle:bundle useMemoryCache:useMemoryCache logLoadError:NO];
 }
 
 + (natural_t)totalMemory
@@ -97,7 +102,7 @@
     return name;
 }
 
-+ (UIImage*)imageNamedRetina:(NSString *)name useMemoryCache:(BOOL)useMemoryCache logLoadError:(BOOL)logLoadError
++ (UIImage*)imageNamedRetina:(NSString *)name fromBundle:(NSBundle *)bundle useMemoryCache:(BOOL)useMemoryCache logLoadError:(BOOL)logLoadError
 {
     // If name is empty, return nil
     name = [self mcCleanImageName:name];
@@ -407,13 +412,13 @@
         [image drawInRect:rect blendMode:kCGBlendModeDestinationIn alpha:1.0f];
 
         // Add overlay
-        UIImage* imageOverlay = [UIImage imageNamedRetina:overlayName useMemoryCache:YES logLoadError:NO];
+        UIImage* imageOverlay = [UIImage imageNamedRetina:overlayName fromBundle:[NSBundle mainBundle] useMemoryCache:YES logLoadError:NO];
         if ((imageOverlay != nil)) {
             [imageOverlay drawInRect:rect blendMode:overlayBlendMode alpha:1.0f];
         }
 
         // Add shadow
-        UIImage* imageShadow = [UIImage imageNamedRetina:shadowName useMemoryCache:YES logLoadError:NO];
+        UIImage* imageShadow = [UIImage imageNamedRetina:shadowName fromBundle:[NSBundle mainBundle] useMemoryCache:YES logLoadError:NO];
         if ((imageShadow != nil)) {
             image = UIGraphicsGetImageFromCurrentImageContext();
             CGContextClearRect(UIGraphicsGetCurrentContext(), rect);
