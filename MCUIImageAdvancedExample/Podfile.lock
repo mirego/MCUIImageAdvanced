@@ -1,17 +1,17 @@
 PODS:
-  - MCUIImageAdvanced (0.2.0):
+  - MCUIImageAdvanced (0.2.4):
     - MGImageUtilities
   - MGImageUtilities (0.0.1)
 
 DEPENDENCIES:
-  - MCUIImageAdvanced (from `..`)
+  - MCUIImageAdvanced (from `../`)
 
 EXTERNAL SOURCES:
   MCUIImageAdvanced:
-    :local: ..
+    :path: ../
 
 SPEC CHECKSUMS:
-  MCUIImageAdvanced: 5b56aeb4f11e0f668d3df3457ef76803f6e734bb
+  MCUIImageAdvanced: b27cea4655247e6aed091e8549dbed555127bb68
   MGImageUtilities: ab3580f2161b10f8a41331baea87aaafbd688950
 
-COCOAPODS: 0.18.1
+COCOAPODS: 0.28.0
