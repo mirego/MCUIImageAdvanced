@@ -68,6 +68,10 @@
 
 /**
  */
++ (void)imageNamedRetinaWarmupWithBundle:(NSBundle *)bundle progressBlock:(void (^)(NSString* imageName, NSUInteger index, NSUInteger count))progressBlock;
+
+/**
+ */
 - (UIImage *)scaledImageFromScale:(CGFloat)fromScale;
 
 /**

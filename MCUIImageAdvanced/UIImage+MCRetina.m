@@ -211,6 +211,11 @@
 
 + (void)imageNamedRetinaWarmupWithProgressBlock:(void (^)(NSString* imageName, NSUInteger index, NSUInteger count))progressBlock
 {
+    [self imageNamedRetinaWarmupWithBundle:[NSBundle mainBundle] progressBlock:progressBlock];
+}
+
++ (void)imageNamedRetinaWarmupWithBundle:(NSBundle *)bundle progressBlock:(void (^)(NSString* imageName, NSUInteger index, NSUInteger count))progressBlock
+{
     NSInteger systemVersion = [[[UIDevice currentDevice] systemVersion] integerValue];
     NSInteger scale = (systemVersion >= 4) ? [[UIScreen mainScreen] scale] : 1;
     if (scale > 1) {
@@ -221,7 +226,7 @@
     }
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+        NSString* resourcePath = [bundle resourcePath];
 
         // Get list of PNG resources
         NSError* error = nil;
@@ -256,7 +261,7 @@
             if (progressBlock)
                 progressBlock(resource, index, count);
 
-            [self pathForNonRetinaResource:[resource stringByDeletingPathExtension] ofType:@"png"];
+            [self pathForNonRetinaResource:[resource stringByDeletingPathExtension] ofType:@"png" image:nil fromBundle:bundle];
             index++;
         }
 
