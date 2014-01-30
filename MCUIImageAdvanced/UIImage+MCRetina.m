@@ -260,8 +260,9 @@
         for (NSString* resource in resources) {
             if (progressBlock)
                 progressBlock(resource, index, count);
-
-            [self pathForNonRetinaResource:[resource stringByDeletingPathExtension] ofType:@"png" image:nil fromBundle:bundle];
+            @autoreleasepool {
+                [self pathForNonRetinaResource:[resource stringByDeletingPathExtension] ofType:@"png" image:nil fromBundle:bundle];
+            }
             index++;
         }
 
