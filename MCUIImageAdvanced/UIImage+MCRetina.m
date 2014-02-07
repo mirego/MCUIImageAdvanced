@@ -38,6 +38,8 @@
 #include <mach/mach.h>
 #include <mach/mach_host.h>
 
+static NSString *const kImageNamedRetinaWarmupCueFile = @"imageNamedRetinaWarmupCue.txt";
+
 @implementation UIImage (MCRetina)
 
 + (UIImage*)imageNamedRetina:(NSString *)name
@@ -265,10 +267,27 @@
             }
             index++;
         }
+        
+        // Add cue file for @selector(imageNamedRetinaWarmedUpWithBundle:)
+        [[NSFileManager defaultManager] createFileAtPath:[[self nonRetinaResourceCachePathWithBundle:bundle] stringByAppendingPathComponent:kImageNamedRetinaWarmupCueFile] contents:[@"YES" dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
 
         if (progressBlock)
             progressBlock(nil, count, count);
     });
+}
+
++ (BOOL)imageNamedRetinaWarmedUpWithBundle:(NSBundle *)bundle
+{
+    return [[NSFileManager defaultManager] fileExistsAtPath:[[self nonRetinaResourceCachePathWithBundle:bundle] stringByAppendingPathComponent:kImageNamedRetinaWarmupCueFile]];
+}
+
++ (NSString *)nonRetinaResourceCachePathWithBundle:(NSBundle *)bundle
+{
+    NSString *cachePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"imageNamedRetina"];
+    if (bundle != [NSBundle mainBundle]) {
+        cachePath = [cachePath stringByAppendingPathComponent:[[bundle resourcePath] lastPathComponent]];
+    }
+    return cachePath;
 }
 
 + (NSString *)pathForNonRetinaResource:(NSString *)name ofType:(NSString *)type
@@ -294,14 +313,8 @@
     // Load @2x file
     file = [bundle pathForResource:[name stringByAppendingString:@"@2x"] ofType:type];
     if (file != nil) {
-        static NSString* resourcePath = nil;
-        static NSString* cachePath = nil;
-
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            resourcePath = [bundle resourcePath];
-            cachePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"imageNamedRetina"];
-        });
+        NSString* resourcePath = [bundle resourcePath];
+        NSString* cachePath = [self nonRetinaResourceCachePathWithBundle:bundle];
 
         // Find the path to the cache file (resourcePath is used so we can place images in ??.lproj folders in similar folders in cache)
         NSString* cacheFile = [[cachePath stringByAppendingPathComponent:[file substringFromIndex:[resourcePath length]]] stringByDeletingPathExtension];

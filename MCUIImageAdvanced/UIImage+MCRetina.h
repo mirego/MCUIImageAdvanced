@@ -72,6 +72,10 @@
 
 /**
  */
++ (BOOL)imageNamedRetinaWarmedUpWithBundle:(NSBundle *)bundle;
+
+/**
+ */
 - (UIImage *)scaledImageFromScale:(CGFloat)fromScale;
 
 /**
