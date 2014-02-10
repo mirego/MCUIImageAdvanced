@@ -281,6 +281,13 @@ static NSString *const kImageNamedRetinaWarmupCueFile = @"imageNamedRetinaWarmup
     return [[NSFileManager defaultManager] fileExistsAtPath:[[self nonRetinaResourceCachePathWithBundle:bundle] stringByAppendingPathComponent:kImageNamedRetinaWarmupCueFile]];
 }
 
++ (void)clearImageNamedRetinaWarmupCacheWithBundle:(NSBundle *)bundle
+{
+    if ([self imageNamedRetinaWarmedUpWithBundle:bundle]) {
+        [[NSFileManager defaultManager] removeItemAtPath:[[self nonRetinaResourceCachePathWithBundle:bundle] stringByAppendingPathComponent:kImageNamedRetinaWarmupCueFile] error:nil];
+    }
+}
+
 + (NSString *)nonRetinaResourceCachePathWithBundle:(NSBundle *)bundle
 {
     NSString *cachePath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"imageNamedRetina"];
