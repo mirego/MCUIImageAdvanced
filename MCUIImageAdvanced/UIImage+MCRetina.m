@@ -117,7 +117,7 @@ static NSString *const kImageNamedRetinaWarmupCueFile = @"imageNamedRetinaWarmup
     dispatch_once(&onceToken, ^{
         imageCache = [[NSCache alloc] init];
         imageCache.name = @"imageNamedRetina";
-        imageCache.totalCostLimit = [self totalMemory] / 4; // A quarter of available memory
+        imageCache.totalCostLimit = 15*1024*1024; // 15Mb of cache should be sufficient. If more is needed big file images should be loaded/uncompressed/drawn async
         imagePathCache = [[NSMutableDictionary alloc] init];
     });
 
