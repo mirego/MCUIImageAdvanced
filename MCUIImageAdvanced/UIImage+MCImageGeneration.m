@@ -66,6 +66,25 @@
     return resultImage;
 }
 
++ (UIImage *)mc_generateCircleImageOfSize:(CGSize)size fillColor:(UIColor *)fillColor strokeColor:(UIColor *)strokeColor strokeWidth:(CGFloat)strokeWidth
+{
+    if (CGSizeEqualToSize(size, CGSizeZero)) {
+        return nil;
+    }
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    CGRect rect = CGRectMake(strokeWidth / 2.0, strokeWidth / 2.0, size.width - strokeWidth, size.height - strokeWidth);
+    CGContextSetFillColorWithColor(currentContext, fillColor.CGColor);
+    CGContextSetLineWidth(currentContext, strokeWidth);
+    CGContextSetStrokeColorWithColor(currentContext, strokeColor.CGColor);
+    CGContextBeginPath(currentContext);
+    CGContextAddEllipseInRect(currentContext, rect);
+    CGContextDrawPath(currentContext, kCGPathFillStroke);
+    UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return resultImage;
+}
+
 + (BOOL)isValidSize:(CGSize)size
 {
     return size.width > 0.0f && size.height > 0.0f;

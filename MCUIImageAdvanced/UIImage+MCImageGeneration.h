@@ -41,5 +41,6 @@
 /**
  */
 + (UIImage *)mc_generateCircleImageOfSize:(CGSize)size color:(UIColor *)color;
++ (UIImage *)mc_generateCircleImageOfSize:(CGSize)size fillColor:(UIColor *)fillColor strokeColor:(UIColor *)strokeColor strokeWidth:(CGFloat)strokeWidth;
 
 @end
