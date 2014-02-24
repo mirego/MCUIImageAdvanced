@@ -104,20 +104,29 @@ static NSString *const kImageNamedRetinaWarmupCueFile = @"imageNamedRetinaWarmup
     return name;
 }
 
++ (NSCache *)imageNamedRetinaImageCache
+{
+    static NSCache* imageCache = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        imageCache = [[NSCache alloc] init];
+        imageCache.name = @"imageNamedRetina";
+        imageCache.totalCostLimit = 15*1024*1024; // 15Mb of cache should be sufficient. If more is needed big file images should be loaded/uncompressed/drawn async
+    });
+    return imageCache;
+}
+
 + (UIImage*)imageNamedRetina:(NSString *)name fromBundle:(NSBundle *)bundle useMemoryCache:(BOOL)useMemoryCache logLoadError:(BOOL)logLoadError
 {
     // If name is empty, return nil
     name = [self mcCleanImageName:name];
     if ((name == nil) || [name isEqualToString:@""])
         return nil;
-
-    static NSCache* imageCache = nil;
+    
+    NSCache* imageCache = [self imageNamedRetinaImageCache];
     static NSMutableDictionary* imagePathCache = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        imageCache = [[NSCache alloc] init];
-        imageCache.name = @"imageNamedRetina";
-        imageCache.totalCostLimit = 15*1024*1024; // 15Mb of cache should be sufficient. If more is needed big file images should be loaded/uncompressed/drawn async
         imagePathCache = [[NSMutableDictionary alloc] init];
     });
 
@@ -284,7 +293,9 @@ static NSString *const kImageNamedRetinaWarmupCueFile = @"imageNamedRetinaWarmup
 + (void)clearImageNamedRetinaWarmupCacheWithBundle:(NSBundle *)bundle
 {
     if ([self imageNamedRetinaWarmedUpWithBundle:bundle]) {
-        [[NSFileManager defaultManager] removeItemAtPath:[[self nonRetinaResourceCachePathWithBundle:bundle] stringByAppendingPathComponent:kImageNamedRetinaWarmupCueFile] error:nil];
+        [[NSFileManager defaultManager] removeItemAtPath:[self nonRetinaResourceCachePathWithBundle:bundle] error:nil];
+        [[NSFileManager defaultManager] createDirectoryAtPath:[self nonRetinaResourceCachePathWithBundle:bundle] withIntermediateDirectories:YES attributes:nil error:nil];
+        [[self imageNamedRetinaImageCache] removeAllObjects];
     }
 }
 
