@@ -116,6 +116,16 @@ static NSString *const kImageNamedRetinaWarmupCueFile = @"imageNamedRetinaWarmup
     return imageCache;
 }
 
++ (NSMutableDictionary *)imageNamedRetinaImagePathCache
+{
+    static NSMutableDictionary* imagePathCache = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        imagePathCache = [[NSMutableDictionary alloc] init];
+    });
+    return imagePathCache;
+}
+
 + (UIImage*)imageNamedRetina:(NSString *)name fromBundle:(NSBundle *)bundle useMemoryCache:(BOOL)useMemoryCache logLoadError:(BOOL)logLoadError
 {
     // If name is empty, return nil
@@ -124,11 +134,7 @@ static NSString *const kImageNamedRetinaWarmupCueFile = @"imageNamedRetinaWarmup
         return nil;
     
     NSCache* imageCache = [self imageNamedRetinaImageCache];
-    static NSMutableDictionary* imagePathCache = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        imagePathCache = [[NSMutableDictionary alloc] init];
-    });
+    NSMutableDictionary* imagePathCache = [self imageNamedRetinaImagePathCache];
 
     // Get image from cache
     UIImage* image = (useMemoryCache ? [imageCache objectForKey:name] : nil);
@@ -296,6 +302,7 @@ static NSString *const kImageNamedRetinaWarmupCueFile = @"imageNamedRetinaWarmup
         [[NSFileManager defaultManager] removeItemAtPath:[self nonRetinaResourceCachePathWithBundle:bundle] error:nil];
         [[NSFileManager defaultManager] createDirectoryAtPath:[self nonRetinaResourceCachePathWithBundle:bundle] withIntermediateDirectories:YES attributes:nil error:nil];
         [[self imageNamedRetinaImageCache] removeAllObjects];
+        [[self imageNamedRetinaImagePathCache] removeAllObjects];
     }
 }
 
