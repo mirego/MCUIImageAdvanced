@@ -52,6 +52,58 @@
     return resultImage;
 }
 
++ (UIImage *)mc_generateImageOfSize:(CGSize)size verticalGradientColors:(NSArray *)colors {
+    return [self mc_generateImageOfSize:size verticalGradientColors:colors opaque:YES];
+}
+
++ (UIImage *)mc_generateImageOfSize:(CGSize)size horizontalGradientColors:(NSArray *)colors {
+    return [self mc_generateImageOfSize:size horizontalGradientColors:colors opaque:YES];
+}
+
++ (UIImage *)mc_generateImageOfSize:(CGSize)size verticalGradientColors:(NSArray *)colors opaque:(BOOL)opaque
+{
+    if (![UIImage isValidSize:size] || ![UIImage isValidGradientColors:colors]) {
+        return nil;
+    }
+
+    CGGradientRef gradient = [self gradientFromColors:colors];
+
+    UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0f);
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    CGContextFillRect(currentContext, CGRectMake(0.0f, 0.0f, size.width, size.height));
+    CGFloat midX = floorf(size.width / 2.0f);
+    CGPoint startPoint = CGPointMake(midX, 0.0f);
+    CGPoint endPoint = CGPointMake(midX, size.height);
+    CGContextDrawLinearGradient(currentContext, gradient, startPoint, endPoint, 0);
+    CGGradientRelease(gradient);
+
+    UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return resultImage;
+}
+
++ (UIImage *)mc_generateImageOfSize:(CGSize)size horizontalGradientColors:(NSArray *)colors opaque:(BOOL)opaque
+{
+    if (![UIImage isValidSize:size] || ![UIImage isValidGradientColors:colors]) {
+        return nil;
+    }
+
+    CGGradientRef gradient = [self gradientFromColors:colors];
+
+    UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0f);
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    CGContextFillRect(currentContext, CGRectMake(0.0f, 0.0f, size.width, size.height));
+    CGFloat midY = floorf(size.height / 2.0f);
+    CGPoint startPoint = CGPointMake(0.0f, midY);
+    CGPoint endPoint = CGPointMake(size.width, midY);
+    CGContextDrawLinearGradient(currentContext, gradient, startPoint, endPoint, 0);
+    CGGradientRelease(gradient);
+
+    UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return resultImage;
+}
+
 + (UIImage *)mc_generateCircleImageOfSize:(CGSize)size color:(UIColor *)color
 {
     if (![UIImage isValidSize:size]) {
@@ -88,6 +140,32 @@
 + (BOOL)isValidSize:(CGSize)size
 {
     return size.width > 0.0f && size.height > 0.0f;
+}
+
++ (BOOL)isValidGradientColors:(NSArray *)colors
+{
+    if ([colors count] < 2) return NO;
+    for (id color in colors) {
+        if (![color isKindOfClass:[UIColor class]]) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
++ (CGGradientRef)gradientFromColors:(NSArray *)colors {
+    CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
+    CGGradientRef gradient = CGGradientCreateWithColors(space, [self colorRefsFromColors:colors], nil);
+    CGColorSpaceRelease(space);
+    return gradient;
+}
+
++ (CFArrayRef)colorRefsFromColors:(NSArray *)colors {
+    NSMutableArray *colorRefs = [NSMutableArray arrayWithCapacity:[colors count]];
+    for (UIColor *color in colors) {
+        [colorRefs addObject:(id)color.CGColor];
+    }
+    return (__bridge CFArrayRef)colorRefs;
 }
 
 @end

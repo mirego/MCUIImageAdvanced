@@ -37,6 +37,10 @@
  */
 + (UIImage *)mc_generateImageOfSize:(CGSize)size color:(UIColor *)color;
 + (UIImage *)mc_generateImageOfSize:(CGSize)size color:(UIColor *)color opaque:(BOOL)opaque;
++ (UIImage *)mc_generateImageOfSize:(CGSize)size verticalGradientColors:(NSArray *)colors;
++ (UIImage *)mc_generateImageOfSize:(CGSize)size horizontalGradientColors:(NSArray *)colors;
++ (UIImage *)mc_generateImageOfSize:(CGSize)size verticalGradientColors:(NSArray *)colors opaque:(BOOL)opaque;
++ (UIImage *)mc_generateImageOfSize:(CGSize)size horizontalGradientColors:(NSArray *)colors opaque:(BOOL)opaque;
 
 /**
  */
