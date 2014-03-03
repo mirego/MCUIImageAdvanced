@@ -35,6 +35,14 @@
 
 /**
  */
++ (NSString *)pathForImageNamedRetina:(NSString *)name;
+
+/**
+ */
++ (NSString *)pathForImageNamedRetina:(NSString *)name fromBundle:(NSBundle *)bundle;
+
+/**
+ */
 + (UIImage *)imageNamedRetina:(NSString *)name;
 
 /**

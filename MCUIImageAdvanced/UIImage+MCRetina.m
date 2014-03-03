@@ -42,6 +42,81 @@ static NSString *const kImageNamedRetinaWarmupCueFile = @"imageNamedRetinaWarmup
 
 @implementation UIImage (MCRetina)
 
+//////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark Public methods
+//////////////////////////////////////////////////////////////////////////////////////////
+
++ (NSString *)pathForImageNamedRetina:(NSString *)name
+{
+    return [self pathForImageNamedRetina:name fromBundle:[NSBundle mainBundle]];
+}
+
++ (NSString *)pathForImageNamedRetina:(NSString *)name fromBundle:(NSBundle *)bundle
+{
+    NSMutableDictionary* imagePathCache = [self imageNamedRetinaImagePathCache];
+    
+    // Get image path from cache
+    NSString* imagePath = [imagePathCache valueForKey:name];
+    if (imagePath == nil) {
+        // Get image path
+        NSString* resource = [name stringByDeletingPathExtension];
+        NSString* type = [name pathExtension];
+        if (type == nil || [type isEqualToString:@""])
+            type = @"png";
+        
+        UIUserInterfaceIdiom userInterfaceIdiom = [[UIDevice currentDevice] userInterfaceIdiom];
+        NSInteger systemVersion = [[[UIDevice currentDevice] systemVersion] integerValue];
+        NSInteger scale = (systemVersion >= 4) ? [[UIScreen mainScreen] scale] : 1;
+        NSInteger height = CGRectGetHeight([[UIScreen mainScreen] bounds]);
+        
+        if (userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            // Check for iPad specific retina+ and normal versions
+            if (imagePath == nil && scale >= 2)
+                imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"@%dx~ipad", scale] ofType:type];
+            if (imagePath == nil)
+                imagePath = [bundle pathForResource:[resource stringByAppendingString:@"~ipad"] ofType:type];
+            
+        } else if (userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+            // Check for iPhone/iPod specific retina+ and normal versions
+            if (imagePath == nil && scale >= 2) {
+                if (height >= 568) { // iPhone 4 inch
+                    imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"-%dh@%dx~iphone", height, scale] ofType:type];
+                    
+                    if (imagePath == nil)
+                        imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"-%dh~iphone", height] ofType:type];
+                    
+                } else {
+                    imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"@%dx~iphone", scale] ofType:type];
+                    
+                    if (imagePath == nil)
+                        imagePath = [bundle pathForResource:[resource stringByAppendingString:@"~iphone"] ofType:type];
+                }
+            }
+        }
+        
+        // Check for retina+ and normal versions
+        if (imagePath == nil && scale >= 2) {
+            if (height >= 568) { // iPhone 4 inch
+                imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"-%dh@%dx", height, scale] ofType:type];
+            }
+            
+            if (imagePath == nil)
+                imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"@%dx", scale] ofType:type];
+        }
+        
+        // Load resource "as is"
+        if (imagePath == nil)
+            imagePath = [bundle pathForResource:resource ofType:type];
+        
+        // Check for retina version and shrink it
+        if (imagePath == nil) {
+            imagePath = [self pathForNonRetinaResource:resource ofType:type image:nil fromBundle:bundle];
+        }
+    }
+    
+    return imagePath;
+}
+
 + (UIImage*)imageNamedRetina:(NSString *)name
 {
     return [self imageNamedRetina:name fromBundle:[NSBundle mainBundle]];
@@ -57,75 +132,6 @@ static NSString *const kImageNamedRetinaWarmupCueFile = @"imageNamedRetinaWarmup
     return [self imageNamedRetina:name fromBundle:bundle useMemoryCache:useMemoryCache logLoadError:NO];
 }
 
-+ (natural_t)totalMemory
-{
-    mach_port_t host_port = mach_host_self();
-    mach_msg_type_number_t host_size = sizeof(vm_statistics_data_t) / sizeof(integer_t);
-    vm_size_t pagesize; host_page_size(host_port, &pagesize);
-
-    vm_statistics_data_t vm_stat;
-    if (host_statistics(host_port, HOST_VM_INFO, (host_info_t)&vm_stat, &host_size) != KERN_SUCCESS)
-        NSLog(@"Failed to fetch vm statistics");
-
-    /* Stats in bytes */
-    natural_t mem_used = (vm_stat.active_count + vm_stat.inactive_count + vm_stat.wire_count) * pagesize;
-    natural_t mem_free = (vm_stat.free_count) * pagesize;
-    natural_t mem_total = mem_used + mem_free;
-
-    return mem_total;
-}
-
-+ (NSString*)mcCleanImageName:(NSString *)name
-{
-    // If path extension is PNG, remove it from key
-    NSString* pathExtension = [name pathExtension];
-    if ([[pathExtension lowercaseString] isEqualToString:@"png"])
-        pathExtension = nil;
-
-    // Remove ~iphone/~ipad
-    name = [name stringByDeletingPathExtension];
-    if ([name hasSuffix:@"~iphone"])
-        name = [name substringToIndex:[name length] - 7];
-    else if ([name hasSuffix:@"~ipad"])
-        name = [name substringToIndex:[name length] - 5];
-
-    // Remove @2x
-    if ([name hasSuffix:@"@2x"])
-        name = [name substringToIndex:[name length] - 3];
-
-    // Remove -568h
-    if ([name hasSuffix:@"-568h"])
-        name = [name substringToIndex:[name length] - 5];
-
-    // Put back path extension
-    if ([pathExtension length] > 0)
-        name = [name stringByAppendingPathExtension:pathExtension];
-
-    return name;
-}
-
-+ (NSCache *)imageNamedRetinaImageCache
-{
-    static NSCache* imageCache = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        imageCache = [[NSCache alloc] init];
-        imageCache.name = @"imageNamedRetina";
-        imageCache.totalCostLimit = 15*1024*1024; // 15Mb of cache should be sufficient. If more is needed big file images should be loaded/uncompressed/drawn async
-    });
-    return imageCache;
-}
-
-+ (NSMutableDictionary *)imageNamedRetinaImagePathCache
-{
-    static NSMutableDictionary* imagePathCache = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        imagePathCache = [[NSMutableDictionary alloc] init];
-    });
-    return imagePathCache;
-}
-
 + (UIImage*)imageNamedRetina:(NSString *)name fromBundle:(NSBundle *)bundle useMemoryCache:(BOOL)useMemoryCache logLoadError:(BOOL)logLoadError
 {
     // If name is empty, return nil
@@ -139,64 +145,7 @@ static NSString *const kImageNamedRetinaWarmupCueFile = @"imageNamedRetinaWarmup
     // Get image from cache
     UIImage* image = (useMemoryCache ? [imageCache objectForKey:name] : nil);
     if (image == nil) {
-        // Get image path from cache
-        NSString* imagePath = [imagePathCache valueForKey:name];
-        if (imagePath == nil) {
-            // Get image path
-            NSString* resource = [name stringByDeletingPathExtension];
-            NSString* type = [name pathExtension];
-            if (type == nil || [type isEqualToString:@""])
-                type = @"png";
-
-            UIUserInterfaceIdiom userInterfaceIdiom = [[UIDevice currentDevice] userInterfaceIdiom];
-            NSInteger systemVersion = [[[UIDevice currentDevice] systemVersion] integerValue];
-            NSInteger scale = (systemVersion >= 4) ? [[UIScreen mainScreen] scale] : 1;
-            NSInteger height = CGRectGetHeight([[UIScreen mainScreen] bounds]);
-
-            if (userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-                // Check for iPad specific retina+ and normal versions
-                if (imagePath == nil && scale >= 2)
-                    imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"@%dx~ipad", scale] ofType:type];
-                if (imagePath == nil)
-                    imagePath = [bundle pathForResource:[resource stringByAppendingString:@"~ipad"] ofType:type];
-
-            } else if (userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
-                // Check for iPhone/iPod specific retina+ and normal versions
-                if (imagePath == nil && scale >= 2) {
-                    if (height >= 568) { // iPhone 4 inch
-                        imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"-%dh@%dx~iphone", height, scale] ofType:type];
-
-                        if (imagePath == nil)
-                            imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"-%dh~iphone", height] ofType:type];
-
-                    } else {
-                        imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"@%dx~iphone", scale] ofType:type];
-
-                        if (imagePath == nil)
-                            imagePath = [bundle pathForResource:[resource stringByAppendingString:@"~iphone"] ofType:type];
-                    }
-                }
-            }
-
-            // Check for retina+ and normal versions
-            if (imagePath == nil && scale >= 2) {
-                if (height >= 568) { // iPhone 4 inch
-                    imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"-%dh@%dx", height, scale] ofType:type];
-                }
-
-                if (imagePath == nil)
-                    imagePath = [bundle pathForResource:[resource stringByAppendingFormat:@"@%dx", scale] ofType:type];
-            }
-
-            // Load resource "as is"
-            if (imagePath == nil)
-                imagePath = [bundle pathForResource:resource ofType:type];
-
-            // Check for retina version and shrink it
-            if (imagePath == nil) {
-                imagePath = [self pathForNonRetinaResource:resource ofType:type image:&image fromBundle:bundle];
-            }
-        }
+        NSString *imagePath = [self pathForImageNamedRetina:name fromBundle:bundle];
 
         // Load image
         if (imagePath != nil) {
@@ -526,6 +475,79 @@ static NSString *const kImageNamedRetinaWarmupCueFile = @"imageNamedRetinaWarmup
     }
 
     return image;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark Private methods
+//////////////////////////////////////////////////////////////////////////////////////////
+
++ (NSCache *)imageNamedRetinaImageCache
+{
+    static NSCache* imageCache = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        imageCache = [[NSCache alloc] init];
+        imageCache.name = @"imageNamedRetina";
+        imageCache.totalCostLimit = 15*1024*1024; // 15Mb of cache should be sufficient. If more is needed big file images should be loaded/uncompressed/drawn async
+    });
+    return imageCache;
+}
+
++ (NSMutableDictionary *)imageNamedRetinaImagePathCache
+{
+    static NSMutableDictionary* imagePathCache = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        imagePathCache = [[NSMutableDictionary alloc] init];
+    });
+    return imagePathCache;
+}
+
++ (NSString*)mcCleanImageName:(NSString *)name
+{
+    // If path extension is PNG, remove it from key
+    NSString* pathExtension = [name pathExtension];
+    if ([[pathExtension lowercaseString] isEqualToString:@"png"])
+        pathExtension = nil;
+    
+    // Remove ~iphone/~ipad
+    name = [name stringByDeletingPathExtension];
+    if ([name hasSuffix:@"~iphone"])
+        name = [name substringToIndex:[name length] - 7];
+    else if ([name hasSuffix:@"~ipad"])
+        name = [name substringToIndex:[name length] - 5];
+    
+    // Remove @2x
+    if ([name hasSuffix:@"@2x"])
+        name = [name substringToIndex:[name length] - 3];
+    
+    // Remove -568h
+    if ([name hasSuffix:@"-568h"])
+        name = [name substringToIndex:[name length] - 5];
+    
+    // Put back path extension
+    if ([pathExtension length] > 0)
+        name = [name stringByAppendingPathExtension:pathExtension];
+    
+    return name;
+}
+
++ (natural_t)totalMemory
+{
+    mach_port_t host_port = mach_host_self();
+    mach_msg_type_number_t host_size = sizeof(vm_statistics_data_t) / sizeof(integer_t);
+    vm_size_t pagesize; host_page_size(host_port, &pagesize);
+    
+    vm_statistics_data_t vm_stat;
+    if (host_statistics(host_port, HOST_VM_INFO, (host_info_t)&vm_stat, &host_size) != KERN_SUCCESS)
+        NSLog(@"Failed to fetch vm statistics");
+    
+    /* Stats in bytes */
+    natural_t mem_used = (vm_stat.active_count + vm_stat.inactive_count + vm_stat.wire_count) * pagesize;
+    natural_t mem_free = (vm_stat.free_count) * pagesize;
+    natural_t mem_total = mem_used + mem_free;
+    
+    return mem_total;
 }
 
 @end
