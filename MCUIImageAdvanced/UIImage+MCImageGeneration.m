@@ -65,9 +65,9 @@
     if (![UIImage isValidSize:size] || ![UIImage isValidGradientColors:colors]) {
         return nil;
     }
-
+    
     CGGradientRef gradient = [self gradientFromColors:colors];
-
+    
     UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0f);
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     CGContextFillRect(currentContext, CGRectMake(0.0f, 0.0f, size.width, size.height));
@@ -76,7 +76,7 @@
     CGPoint endPoint = CGPointMake(midX, size.height);
     CGContextDrawLinearGradient(currentContext, gradient, startPoint, endPoint, 0);
     CGGradientRelease(gradient);
-
+    
     UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return resultImage;
@@ -87,9 +87,9 @@
     if (![UIImage isValidSize:size] || ![UIImage isValidGradientColors:colors]) {
         return nil;
     }
-
+    
     CGGradientRef gradient = [self gradientFromColors:colors];
-
+    
     UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0f);
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
     CGContextFillRect(currentContext, CGRectMake(0.0f, 0.0f, size.width, size.height));
@@ -98,7 +98,7 @@
     CGPoint endPoint = CGPointMake(size.width, midY);
     CGContextDrawLinearGradient(currentContext, gradient, startPoint, endPoint, 0);
     CGGradientRelease(gradient);
-
+    
     UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return resultImage;
@@ -153,19 +153,21 @@
     return YES;
 }
 
-+ (CGGradientRef)gradientFromColors:(NSArray *)colors {
++ (CGGradientRef)gradientFromColors:(NSArray *)colors
+{
     CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
-    CGGradientRef gradient = CGGradientCreateWithColors(space, [self colorRefsFromColors:colors], nil);
+    CGGradientRef gradient = CGGradientCreateWithColors(space, (__bridge CFArrayRef) [self cgColorsFromColors:colors], nil);
     CGColorSpaceRelease(space);
     return gradient;
 }
 
-+ (CFArrayRef)colorRefsFromColors:(NSArray *)colors {
++ (NSArray *)cgColorsFromColors:(NSArray *)colors
+{
     NSMutableArray *colorRefs = [NSMutableArray arrayWithCapacity:[colors count]];
     for (UIColor *color in colors) {
         [colorRefs addObject:(id)color.CGColor];
     }
-    return (__bridge CFArrayRef)colorRefs;
+    return colorRefs;
 }
 
 @end
