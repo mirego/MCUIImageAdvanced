@@ -69,7 +69,7 @@ Blend `UIImage` and `UIColor` together using different [`CGBlendMode`](https://d
 
 ### Generating simple images
 
-Obtain simple `UIImage`s drawned with CoreGraphics
+Obtain simple `UIImage`s drawn with CoreGraphics
 
 ```objective-c
 #import 'UIImage+MCAdvanced.h'
