@@ -51,7 +51,7 @@ Blend `UIImage` and `UIColor` together using different [`CGBlendMode`](https://d
                                                   layers:@[[UIColor colorWithWhite:1.0 alpha:0.2]]
                                                blendMode:kCGBlendModeNormal;
 
-  // Same as above bug using different blendModes for each layer.
+  // Same as above but using different blendModes for each layer.
   UIImage *blendedImage = [UIImage blendedImageWithImage:srcImage
                                                   layers:@[[UIColor colorWithWhite:1.0 alpha:0.2],[UIColor colorWithWhite:0.2 alpha:0.2]]
                                               blendModes:@[@(kCGBlendModeLuminosity),@(kCGBlendModeDarken)]
