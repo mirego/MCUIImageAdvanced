@@ -2,4 +2,4 @@
 
 language: objective-c
 script:
-- xctool test -workspace MCUIImageAdvancedExample/MCUIImageAdvancedExample.xcworkspace -scheme MCUIImageAdvancedExample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- test -workspace MCUIImageAdvancedExample/UIImageAdvancedExample.xcworkspace -scheme UIImageAdvancedExample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
