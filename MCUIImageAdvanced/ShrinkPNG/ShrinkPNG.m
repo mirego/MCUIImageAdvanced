@@ -71,7 +71,7 @@ unsigned char *CreateBytesFromImage(CGImageRef image)
 		return NULL;
 	}
     
-	CGContextRef context = CGBitmapContextCreate(contextData, width, height, 8, width * 4, colorSpace, kCGImageAlphaPremultipliedFirst);
+	CGContextRef context = CGBitmapContextCreate(contextData, width, height, 8, width * 4, colorSpace, (CGBitmapInfo)kCGImageAlphaPremultipliedFirst);
 	CGColorSpaceRelease(colorSpace);
     
 	if (context == NULL) {
@@ -99,7 +99,7 @@ CGImageRef CreateImageFromBytes(unsigned char *data, size_t width, size_t height
 		return NULL;
 	}
     
-	CGContextRef context = CGBitmapContextCreate(data, width, height, 8, width * 4, colorSpace, withAlpha ? kCGImageAlphaPremultipliedFirst : kCGImageAlphaNoneSkipFirst);
+	CGContextRef context = CGBitmapContextCreate(data, width, height, 8, width * 4, colorSpace, withAlpha ? (CGBitmapInfo)kCGImageAlphaPremultipliedFirst : (CGBitmapInfo)kCGImageAlphaNoneSkipFirst);
 	CGColorSpaceRelease(colorSpace);
     
 	if (context == NULL) {
