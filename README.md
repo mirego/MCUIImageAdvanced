@@ -1,7 +1,9 @@
 # MCUIImageAdvanced - UIImage advanced
-[![Badge w/ Version](https://cocoapod-badges.herokuapp.com/v/MCUIImageAdvanced/badge.png)](https://cocoadocs.org/docsets/MCUIImageAdvanced)
-[![Badge w/ Platform](https://cocoapod-badges.herokuapp.com/p/MCUIImageAdvanced/badge.png)](https://cocoadocs.org/docsets/MCUIImageAdvanced)
 
+[![CI Status](http://img.shields.io/travis/Mirego/MCUIImageAdvanced.svg?style=flat)](https://travis-ci.org/Mirego/MCUIImageAdvanced)
+[![Version](https://img.shields.io/cocoapods/v/MCUIImageAdvanced.svg?style=flat)](http://cocoadocs.org/docsets/MCUIImageAdvanced)
+[![License](https://img.shields.io/cocoapods/l/MCUIImageAdvanced.svg?style=flat)](http://cocoadocs.org/docsets/MCUIImageAdvanced)
+[![Platform](https://img.shields.io/cocoapods/p/MCUIImageAdvanced.svg?style=flat)](http://cocoadocs.org/docsets/MCUIImageAdvanced)
 
 Utility methods for [`UIImage`](http://developer.apple.com/library/ios/#documentation/UIKit/Reference/UIImage_Class/Reference/Reference.html).
 
