@@ -61,8 +61,8 @@
         NSLog(@"Failed to fetch vm statistics");
 
     /* Stats in bytes */
-    natural_t mem_used = (vm_stat.active_count + vm_stat.inactive_count + vm_stat.wire_count) * pagesize;
-    natural_t mem_free = (vm_stat.free_count) * pagesize;
+    natural_t mem_used = (natural_t)((vm_stat.active_count + vm_stat.inactive_count + vm_stat.wire_count) * pagesize);
+    natural_t mem_free = (natural_t)((vm_stat.free_count) * pagesize);
     natural_t mem_total = mem_used + mem_free;
 
     return mem_total;
@@ -134,7 +134,7 @@
             if (userInterfaceIdiom == UIUserInterfaceIdiomPad) {
                 // Check for iPad specific retina+ and normal versions
                 if (imagePath == nil && scale >= 2)
-                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%dx~ipad", scale] ofType:type];
+                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%ldx~ipad", (long)scale] ofType:type];
                 if (imagePath == nil)
                     imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingString:@"~ipad"] ofType:type];
 
@@ -142,13 +142,13 @@
                 // Check for iPhone/iPod specific retina+ and normal versions
                 if (imagePath == nil && scale >= 2) {
                     if (height >= 568) { // iPhone 4 inch
-                        imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%dh@%dx~iphone", height, scale] ofType:type];
+                        imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%ldh@%ldx~iphone", (long)height, (long)scale] ofType:type];
 
                         if (imagePath == nil)
-                            imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%dh~iphone", height] ofType:type];
+                            imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%ldh~iphone", (long)height] ofType:type];
 
                     } else {
-                        imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%dx~iphone", scale] ofType:type];
+                        imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%ldx~iphone", (long)scale] ofType:type];
 
                         if (imagePath == nil)
                             imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingString:@"~iphone"] ofType:type];
@@ -159,11 +159,11 @@
             // Check for retina+ and normal versions
             if (imagePath == nil && scale >= 2) {
                 if (height >= 568) { // iPhone 4 inch
-                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%dh@%dx", height, scale] ofType:type];
+                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%ldh@%ldx", (long)height, (long)scale] ofType:type];
                 }
 
                 if (imagePath == nil)
-                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%dx", scale] ofType:type];
+                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%ldx", (long)scale] ofType:type];
             }
 
             // Load resource "as is"
