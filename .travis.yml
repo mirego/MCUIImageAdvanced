@@ -2,4 +2,6 @@
 
 language: objective-c
 script:
-- test -workspace MCUIImageAdvancedExample/UIImageAdvancedExample.xcworkspace -scheme UIImageAdvancedExample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- cd MCUIImageAdvancedExample
+- pod install
+- xctool test -workspace UIImageAdvancedExample.xcworkspace -scheme UIImageAdvancedExample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
