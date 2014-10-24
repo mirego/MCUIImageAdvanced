@@ -45,9 +45,14 @@
     return [self imageNamedRetina:name useMemoryCache:YES];
 }
 
++ (UIImage*)imageNamedRetina:(NSString *)name inDirectory:(NSString *)subpath
+{
+    return [self imageNamedRetina:name useMemoryCache:NO logLoadError:NO inDirectory:subpath];
+}
+
 + (UIImage*)imageNamedRetina:(NSString *)name useMemoryCache:(BOOL)useMemoryCache
 {
-    return [self imageNamedRetina:name useMemoryCache:useMemoryCache logLoadError:NO];
+    return [self imageNamedRetina:name useMemoryCache:useMemoryCache logLoadError:NO inDirectory:nil];
 }
 
 + (natural_t)totalMemory
@@ -97,7 +102,7 @@
     return name;
 }
 
-+ (UIImage*)imageNamedRetina:(NSString *)name useMemoryCache:(BOOL)useMemoryCache logLoadError:(BOOL)logLoadError
++ (UIImage*)imageNamedRetina:(NSString *)name useMemoryCache:(BOOL)useMemoryCache logLoadError:(BOOL)logLoadError inDirectory:(NSString *)subpath
 {
     // If name is empty, return nil
     name = [self mcCleanImageName:name];
@@ -119,6 +124,10 @@
     if (image == nil) {
         // Get image path from cache
         NSString* imagePath = [imagePathCache valueForKey:name];
+        // When a subpath is specified, the cache can't be used because we can't assume that it's always the same subpath.
+        if (subpath.length > 0) {
+            imagePath = nil;
+        }
         if (imagePath == nil) {
             // Get image path
             NSString* resource = [name stringByDeletingPathExtension];
@@ -134,24 +143,24 @@
             if (userInterfaceIdiom == UIUserInterfaceIdiomPad) {
                 // Check for iPad specific retina+ and normal versions
                 if (imagePath == nil && scale >= 2)
-                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%ldx~ipad", (long)scale] ofType:type];
+                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%ldx~ipad", (long)scale] ofType:type inDirectory:subpath];
                 if (imagePath == nil)
-                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingString:@"~ipad"] ofType:type];
+                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingString:@"~ipad"] ofType:type inDirectory:subpath];
 
             } else if (userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
                 // Check for iPhone/iPod specific retina+ and normal versions
                 if (imagePath == nil && scale >= 2) {
                     if (height >= 568) { // iPhone 4 inch
-                        imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%ldh@%ldx~iphone", (long)height, (long)scale] ofType:type];
+                        imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%ldh@%ldx~iphone", (long)height, (long)scale] ofType:type inDirectory:subpath];
 
                         if (imagePath == nil)
-                            imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%ldh~iphone", (long)height] ofType:type];
+                            imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%ldh~iphone", (long)height] ofType:type inDirectory:subpath];
 
                     } else {
-                        imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%ldx~iphone", (long)scale] ofType:type];
+                        imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%ldx~iphone", (long)scale] ofType:type inDirectory:subpath];
 
                         if (imagePath == nil)
-                            imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingString:@"~iphone"] ofType:type];
+                            imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingString:@"~iphone"] ofType:type inDirectory:subpath];
                     }
                 }
             }
@@ -159,16 +168,16 @@
             // Check for retina+ and normal versions
             if (imagePath == nil && scale >= 2) {
                 if (height >= 568) { // iPhone 4 inch
-                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%ldh@%ldx", (long)height, (long)scale] ofType:type];
+                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%ldh@%ldx", (long)height, (long)scale] ofType:type inDirectory:subpath];
                 }
 
                 if (imagePath == nil)
-                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%ldx", (long)scale] ofType:type];
+                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%ldx", (long)scale] ofType:type inDirectory:subpath];
             }
 
             // Load resource "as is"
             if (imagePath == nil)
-                imagePath = [[NSBundle mainBundle] pathForResource:resource ofType:type];
+                imagePath = [[NSBundle mainBundle] pathForResource:resource ofType:type inDirectory:subpath];
 
             // Check for retina version and shrink it
             if (imagePath == nil) {
@@ -407,13 +416,13 @@
         [image drawInRect:rect blendMode:kCGBlendModeDestinationIn alpha:1.0f];
 
         // Add overlay
-        UIImage* imageOverlay = [UIImage imageNamedRetina:overlayName useMemoryCache:YES logLoadError:NO];
+        UIImage* imageOverlay = [UIImage imageNamedRetina:overlayName useMemoryCache:YES logLoadError:NO inDirectory:nil];
         if ((imageOverlay != nil)) {
             [imageOverlay drawInRect:rect blendMode:overlayBlendMode alpha:1.0f];
         }
 
         // Add shadow
-        UIImage* imageShadow = [UIImage imageNamedRetina:shadowName useMemoryCache:YES logLoadError:NO];
+        UIImage* imageShadow = [UIImage imageNamedRetina:shadowName useMemoryCache:YES logLoadError:NO inDirectory:nil];
         if ((imageShadow != nil)) {
             image = UIGraphicsGetImageFromCurrentImageContext();
             CGContextClearRect(UIGraphicsGetCurrentContext(), rect);
