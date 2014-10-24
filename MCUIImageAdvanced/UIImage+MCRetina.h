@@ -39,6 +39,10 @@
 
 /**
  */
++ (UIImage *)imageNamedRetina:(NSString *)name inDirectory:(NSString *)subpath;
+
+/**
+ */
 + (UIImage *)imageNamedRetina:(NSString *)name useMemoryCache:(BOOL)useMemoryCache;
 
 /**
