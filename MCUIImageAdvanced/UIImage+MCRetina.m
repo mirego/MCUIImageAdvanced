@@ -91,8 +91,20 @@
     if ([name hasSuffix:@"@2x"])
         name = [name substringToIndex:[name length] - 3];
 
+    // Remove @3x
+    if ([name hasSuffix:@"@3x"])
+        name = [name substringToIndex:[name length] - 3];
+
     // Remove -568h
     if ([name hasSuffix:@"-568h"])
+        name = [name substringToIndex:[name length] - 5];
+
+    // Remove -667h
+    if ([name hasSuffix:@"-667h"]) // iPhone 6 - 4.7 inch
+        name = [name substringToIndex:[name length] - 5];
+
+    // Remove -736h
+    if ([name hasSuffix:@"-736h"]) // iPhone 6 Plus - 5.5 inch
         name = [name substringToIndex:[name length] - 5];
 
     // Put back path extension
@@ -150,7 +162,7 @@
             } else if (userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
                 // Check for iPhone/iPod specific retina+ and normal versions
                 if (imagePath == nil && scale >= 2) {
-                    if (height >= 568) { // iPhone 4 inch
+                    if (height >= 568) { // iPhone 4 inch and bigger
                         imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%ldh@%ldx~iphone", (long)height, (long)scale] ofType:type inDirectory:subpath];
 
                         if (imagePath == nil)
@@ -249,6 +261,10 @@
             if ([resource hasSuffix:@"@2x"]) {
                 [resource deleteCharactersInRange:NSMakeRange([resource length] - [@"@2x" length], [@"@2x" length])];
             }
+            if ([resource hasSuffix:@"@3x"]) {
+                [resource deleteCharactersInRange:NSMakeRange([resource length] - [@"@3x" length], [@"@3x" length])];
+            }
+
 
             [resourcesSet addObject:resource];
         }
