@@ -80,12 +80,12 @@ Obtain simple `UIImage`s drawn with CoreGraphics
 {
   // Square opaque image
   UIImage *redSquareImage = [UIImage mc_generateImageOfSize:CGSizeMake(100,100) color:[UIColor redcolor]];
-                                                  
+
   // Square translucent image
   UIImage *redTranslucentSquareImage = [UIImage mc_generateImageOfSize:CGSizeMake(100,100) color:[[UIColor redcolor] colorWithAlphaComponent:0.5f] opaque:NO];
- 
+
   // Circle image
-  UIImage *redCircleImage = [UIImage mc_generateCircleImageOfSize:CGSize(100,100) color:[UIColor redcolor]];  
+  UIImage *redCircleImage = [UIImage mc_generateCircleImageOfSize:CGSize(100,100) color:[UIColor redcolor]];
 }
 ```
 
@@ -137,7 +137,7 @@ Don't forget to `#import "UIImage+MCAdvanced.h"` where it's needed.
 
 ## License
 
-MCUIImageAdvanced is © 2013 [Mirego](http://www.mirego.com) and may be freely
+MCUIImageAdvanced is © 2013-2015 [Mirego](http://www.mirego.com) and may be freely
 distributed under the [New BSD license](http://opensource.org/licenses/BSD-3-Clause).
 See the [`LICENSE.md`](https://github.com/mirego/MCUIImageAdvanced/blob/master/LICENSE.md) file.
 
