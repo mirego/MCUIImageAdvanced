@@ -445,7 +445,9 @@
         image = [UIImage imageNamedRetina:name];
         if (image == nil)
             return nil;
-
+        
+        UIImage* originalImage = image;
+        
         CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
         UIGraphicsBeginImageContextWithOptions(image.size, NO, 0.0f);
 
@@ -469,10 +471,15 @@
             [imageShadow drawInRect:rect];
             [image drawInRect:rect blendMode:kCGBlendModeNormal alpha:1.0f];
         }
-
+        
         image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-
+        
+        // Add resizing
+        if (!UIEdgeInsetsEqualToEdgeInsets(originalImage.capInsets, UIEdgeInsetsZero)) {
+            image = [image resizableImageWithCapInsets:originalImage.capInsets resizingMode:originalImage.resizingMode];
+        }
+        
         // Cache image
         if ((image != nil)) {
             [cache setObject:image forKey:key];
