@@ -1,6 +1,6 @@
 # MCUIImageAdvanced - UIImage advanced
 
-[![CI Status](http://img.shields.io/travis/Mirego/MCUIImageAdvanced.svg?style=flat)](https://travis-ci.org/Mirego/MCUIImageAdvanced)
+[![CI Status](http://img.shields.io/travis/mirego/MCUIImageAdvanced.svg?style=flat)](https://travis-ci.org/mirego/MCUIImageAdvanced)
 [![Version](https://img.shields.io/cocoapods/v/MCUIImageAdvanced.svg?style=flat)](http://cocoadocs.org/docsets/MCUIImageAdvanced)
 [![License](https://img.shields.io/cocoapods/l/MCUIImageAdvanced.svg?style=flat)](http://cocoadocs.org/docsets/MCUIImageAdvanced)
 [![Platform](https://img.shields.io/cocoapods/p/MCUIImageAdvanced.svg?style=flat)](http://cocoadocs.org/docsets/MCUIImageAdvanced)
