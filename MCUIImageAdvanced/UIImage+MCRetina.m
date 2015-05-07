@@ -114,10 +114,25 @@
     return name;
 }
 
-+ (UIImage*)imageNamedRetina:(NSString *)name useMemoryCache:(BOOL)useMemoryCache logLoadError:(BOOL)logLoadError inDirectory:(NSString *)subpath
++ (BOOL)mc_hasCompiledAssetsCatalog
 {
+    static BOOL hasCompiledAssetsCatalog = NO;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        hasCompiledAssetsCatalog = ([[[NSBundle mainBundle] pathForResource:@"Assets" ofType:@"car"] length] > 0);
+    });
+    
+    return hasCompiledAssetsCatalog;
+}
+
++ (UIImage*)imageNamedRetina:(NSString *)originalName useMemoryCache:(BOOL)useMemoryCache logLoadError:(BOOL)logLoadError inDirectory:(NSString *)subpath
+{
+    if ([self mc_hasCompiledAssetsCatalog]) {
+        return ([originalName length] > 0) ? [UIImage imageNamed:originalName] : nil;
+    }
+    
     // If name is empty, return nil
-    name = [self mcCleanImageName:name];
+    NSString *name = [self mcCleanImageName:originalName];
     if ((name == nil) || [name isEqualToString:@""])
         return nil;
 
@@ -201,6 +216,11 @@
         if (imagePath != nil) {
             image = [UIImage imageWithContentsOfFile:imagePath];
         }
+        
+        // Fallback to imageNamed:
+        if (image != nil) {
+            image = [UIImage imageNamed:originalName];
+        }
 
         // Check if image was loaded
         if (image != nil) {
@@ -227,6 +247,10 @@
 
 + (void)imageNamedRetinaWarmupWithProgressBlock:(void (^)(NSString* imageName, NSUInteger index, NSUInteger count))progressBlock
 {
+    if ([self mc_hasCompiledAssetsCatalog]) {
+        return;
+    }
+    
     NSInteger systemVersion = [[[UIDevice currentDevice] systemVersion] integerValue];
     NSInteger scale = (systemVersion >= 4) ? [[UIScreen mainScreen] scale] : 1;
     if (scale > 1) {
@@ -264,7 +288,6 @@
             if ([resource hasSuffix:@"@3x"]) {
                 [resource deleteCharactersInRange:NSMakeRange([resource length] - [@"@3x" length], [@"@3x" length])];
             }
-
 
             [resourcesSet addObject:resource];
         }
@@ -422,7 +445,9 @@
         image = [UIImage imageNamedRetina:name];
         if (image == nil)
             return nil;
-
+        
+        UIImage* originalImage = image;
+        
         CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
         UIGraphicsBeginImageContextWithOptions(image.size, NO, 0.0f);
 
@@ -446,10 +471,15 @@
             [imageShadow drawInRect:rect];
             [image drawInRect:rect blendMode:kCGBlendModeNormal alpha:1.0f];
         }
-
+        
         image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-
+        
+        // Add resizing
+        if (!UIEdgeInsetsEqualToEdgeInsets(originalImage.capInsets, UIEdgeInsetsZero)) {
+            image = [image resizableImageWithCapInsets:originalImage.capInsets resizingMode:originalImage.resizingMode];
+        }
+        
         // Cache image
         if ((image != nil)) {
             [cache setObject:image forKey:key];

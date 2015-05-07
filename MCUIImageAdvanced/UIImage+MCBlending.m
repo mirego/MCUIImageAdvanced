@@ -48,10 +48,7 @@
     CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
 
     // Create an image context used to create an image
-    if (UIGraphicsBeginImageContextWithOptions)
-        UIGraphicsBeginImageContextWithOptions(image.size, NO, 0.0); // 0.0 = scale factor to support the native device scaling (retina display support)
-    else
-        UIGraphicsBeginImageContext(image.size);
+    UIGraphicsBeginImageContextWithOptions(image.size, NO, 0.0); // 0.0 = scale factor to support the native device scaling (retina display support)
 
     CGContextRef context = UIGraphicsGetCurrentContext();
 

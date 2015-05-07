@@ -1,7 +1,9 @@
 # reference: http://www.objc.io/issue-6/travis-ci.html
+before_install:
+  - gem install cocoapods -v '0.37.1'
 
 language: objective-c
 script:
-- cd MCUIImageAdvancedExample
-- pod install
-- xctool test -workspace UIImageAdvancedExample.xcworkspace -scheme UIImageAdvancedExample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - cd MCUIImageAdvancedExample
+  - pod install
+  - xctool test -workspace UIImageAdvancedExample.xcworkspace -scheme UIImageAdvancedExample -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO

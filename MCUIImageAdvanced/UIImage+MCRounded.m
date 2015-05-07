@@ -44,10 +44,7 @@
         return self;
 
     CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
-    if (UIGraphicsBeginImageContextWithOptions)
-        UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
-    else
-        UIGraphicsBeginImageContext(rect.size);
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
 
     [[UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:corners cornerRadii:cornerRadii] addClip];
     [self drawInRect:rect];
@@ -91,10 +88,7 @@
 
         CGRect rect = UIEdgeInsetsInsetRect(CGRectMake(0, 0, size.width, size.height), edgeInsets);
 
-        if (UIGraphicsBeginImageContextWithOptions)
-            UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-        else
-            UIGraphicsBeginImageContext(size);
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0);
 
         // Mask context to create rounded corners
         CGContextRef context = UIGraphicsGetCurrentContext();

@@ -66,7 +66,7 @@
         return nil;
     }
     
-    CGGradientRef gradient = [self gradientFromColors:colors];
+    CGGradientRef gradient = [self newGradientFromColors:colors];
     
     UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0f);
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
@@ -88,7 +88,7 @@
         return nil;
     }
     
-    CGGradientRef gradient = [self gradientFromColors:colors];
+    CGGradientRef gradient = [self newGradientFromColors:colors];
     
     UIGraphicsBeginImageContextWithOptions(size, opaque, 0.0f);
     CGContextRef currentContext = UIGraphicsGetCurrentContext();
@@ -153,7 +153,7 @@
     return YES;
 }
 
-+ (CGGradientRef)gradientFromColors:(NSArray *)colors
++ (CGGradientRef)newGradientFromColors:(NSArray *)colors
 {
     CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
     CGGradientRef gradient = CGGradientCreateWithColors(space, (__bridge CFArrayRef) [self cgColorsFromColors:colors], nil);
