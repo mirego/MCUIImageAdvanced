@@ -41,7 +41,8 @@
 		09ABD56016E8E7A100290BB3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		09ABD56116E8E7A100290BB3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		09ABD57716E8E97300290BB3 /* CharlieBrown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CharlieBrown@2x.png"; sourceTree = SOURCE_ROOT; };
-		2F39A8AC2F8846AA8E4A9A53 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		51C601F5C5481C15E9B22A84 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		93384FE246D99C79E1780D69 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +66,7 @@
 				09ABD54B16E8E7A000290BB3 /* UIImageAdvancedExample */,
 				09ABD54416E8E7A000290BB3 /* Frameworks */,
 				09ABD54316E8E7A000290BB3 /* Products */,
-				2F39A8AC2F8846AA8E4A9A53 /* Pods.xcconfig */,
+				EF70E2222B314883D927B54D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,6 +115,15 @@
 				09ABD55B16E8E7A100290BB3 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EF70E2222B314883D927B54D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				93384FE246D99C79E1780D69 /* Pods.debug.xcconfig */,
+				51C601F5C5481C15E9B22A84 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,7 +202,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -287,7 +297,7 @@
 		};
 		09ABD56616E8E7A100290BB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F39A8AC2F8846AA8E4A9A53 /* Pods.xcconfig */;
+			baseConfigurationReference = 93384FE246D99C79E1780D69 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIImageAdvancedExample/UIImageAdvancedExample-Prefix.pch";
@@ -299,7 +309,7 @@
 		};
 		09ABD56716E8E7A100290BB3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F39A8AC2F8846AA8E4A9A53 /* Pods.xcconfig */;
+			baseConfigurationReference = 51C601F5C5481C15E9B22A84 /* Pods.release.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIImageAdvancedExample/UIImageAdvancedExample-Prefix.pch";

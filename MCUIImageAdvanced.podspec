@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'MCUIImageAdvanced'
-  s.version  = '0.2.8'
+  s.version  = '0.2.9'
   s.license  = 'BSD 3-Clause'
   s.summary  = 'Advanced and powerful functionality enhancements to UIImage.'
   s.homepage = 'https://github.com/mirego/MCUIImageAdvanced'
