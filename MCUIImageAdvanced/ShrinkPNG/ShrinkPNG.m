@@ -204,8 +204,9 @@ unsigned char *ShrinkBitmapData(unsigned char *inData, size_t width, size_t heig
 }
 
 + (CGImageRef)newShrinkedImageWithContentsOfFile:(NSString *)filename {
-    if (filename == nil || [filename isEqualToString:@""])
+    if ([filename length] == 0) {
         return NULL;
+    }
     
     CGImageRef inImage = CreateImageFromFileAtPath(filename);
     CGImageRef outImage = NULL;
