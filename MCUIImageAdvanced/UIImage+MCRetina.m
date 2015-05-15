@@ -208,7 +208,16 @@
         
         // Fallback to imageNamed:
         if (image == nil) {
-            image = [UIImage imageNamed:originalName];
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+                NSInteger height = CGRectGetHeight([[UIScreen mainScreen] bounds]);
+                if (height >= 568) {
+                    image = [UIImage imageNamed:[originalName stringByAppendingFormat:@"-%ldh", (long)height]];
+                }
+            }
+            
+            if (image == nil) {
+                image = [UIImage imageNamed:originalName];
+            }
         }
         
         // Check if image was loaded
