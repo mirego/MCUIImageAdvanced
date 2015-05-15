@@ -370,6 +370,11 @@
                 image = [UIImage imageNamed:[name stringByAppendingPathExtension:type]];
             }
             
+            // If image doesn't exists, return now
+            if (image == nil) {
+                return nil;
+            }
+            
             // If available image is already at correct scale, don't scale it
             if (image.scale == 1) {
                 return nil;
