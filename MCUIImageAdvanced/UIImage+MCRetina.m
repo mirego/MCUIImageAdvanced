@@ -152,51 +152,62 @@
             
             if (userInterfaceIdiom == UIUserInterfaceIdiomPad) {
                 // Check for iPad specific retina+ and normal versions
-                if (imagePath == nil && scale >= 2) {
+                if (scale >= 2) {
                     imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%ldx~ipad", (long)scale] ofType:type inDirectory:subpath];
                 }
+                
                 if (imagePath == nil) {
                     imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingString:@"~ipad"] ofType:type inDirectory:subpath];
                 }
                 
             } else if (userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
                 // Check for iPhone/iPod specific retina+ and normal versions
-                if (imagePath == nil && scale >= 2) {
-                    if (height >= 568) { // iPhone 4 inch and bigger
+                if (height >= 568) {
+                    if (scale >= 2) {
                         imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%ldh@%ldx~iphone", (long)height, (long)scale] ofType:type inDirectory:subpath];
-                        
-                        if (imagePath == nil) {
-                            imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%ldh~iphone", (long)height] ofType:type inDirectory:subpath];
-                        }
-                        
-                    } else {
+                    }
+                    
+                    if (imagePath == nil) {
+                        imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%ldh~iphone", (long)height] ofType:type inDirectory:subpath];
+                    }
+                }
+                
+                if (imagePath == nil) {
+                    if (scale >= 2) {
                         imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%ldx~iphone", (long)scale] ofType:type inDirectory:subpath];
-                        
-                        if (imagePath == nil) {
-                            imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingString:@"~iphone"] ofType:type inDirectory:subpath];
-                        }
+                    }
+                    
+                    if (imagePath == nil) {
+                        imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingString:@"~iphone"] ofType:type inDirectory:subpath];
                     }
                 }
             }
             
             // Check for retina+ and normal versions
-            if (imagePath == nil && scale >= 2) {
-                if (height >= 568) { // iPhone 4 inch
-                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%ldh@%ldx", (long)height, (long)scale] ofType:type inDirectory:subpath];
+            if (imagePath == nil) {
+                if (height >= 568) {
+                    if (scale >= 2) {
+                        imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%ldh@%ldx", (long)height, (long)scale] ofType:type inDirectory:subpath];
+                    }
+                    
+                    if (imagePath == nil) {
+                        imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"-%ldh", (long)height] ofType:type inDirectory:subpath];
+                    }
                 }
                 
                 if (imagePath == nil) {
-                    imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%ldx", (long)scale] ofType:type inDirectory:subpath];
+                    if (scale >= 2) {
+                        imagePath = [[NSBundle mainBundle] pathForResource:[resource stringByAppendingFormat:@"@%ldx", (long)scale] ofType:type inDirectory:subpath];
+                    }
+                    
+                    if (imagePath == nil) {
+                        imagePath = [[NSBundle mainBundle] pathForResource:resource ofType:type inDirectory:subpath];
+                    }
                 }
             }
             
-            // Load resource "as is"
-            if (imagePath == nil) {
-                imagePath = [[NSBundle mainBundle] pathForResource:resource ofType:type inDirectory:subpath];
-            }
-            
             // Check for retina version and shrink it
-            if (imagePath == nil) {
+            if (imagePath == nil && scale == 1) {
                 imagePath = [self pathForNonRetinaResource:resource ofType:type image:&image];
             }
         }
@@ -247,8 +258,9 @@
 {
     NSInteger scale = [[UIScreen mainScreen] scale];
     if (scale > 1) {
-        if (progressBlock)
+        if (progressBlock) {
             progressBlock(nil, -1, -1);
+        }
         
         return;
     }
