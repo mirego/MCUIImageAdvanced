@@ -372,30 +372,34 @@
             
         } else {
             // Load available image from asset catalog
-            UIImage *image;
+            UIImage *imageToShrink;
             if ([type length] == 0) {
-                image = [UIImage imageNamed:name];
+                imageToShrink = [UIImage imageNamed:name];
             } else {
-                image = [UIImage imageNamed:[name stringByAppendingPathExtension:type]];
+                imageToShrink = [UIImage imageNamed:[name stringByAppendingPathExtension:type]];
             }
             
             // If image doesn't exists, return now
-            if (image == nil) {
+            if (imageToShrink == nil) {
                 return nil;
             }
             
-            // If available image is already at correct scale, don't scale it
-            if (image.scale == 1) {
+            // If available image is already at correct scale, use it
+            if (imageToShrink.scale == 1) {
+                if ((image != nil)) {
+                    *image = imageToShrink;
+                }
+                
                 return nil;
             }
             
             // If necessary, scale it so it's possible to use ShrinkPNG
-            if (image.scale > 2) {
-                image = [image scaledImageFromScale:image.scale toScale:2.0f];
+            if (imageToShrink.scale > 2) {
+                imageToShrink = [imageToShrink scaledImageFromScale:imageToShrink.scale toScale:2.0f];
             }
             
             // Shrink image
-            CGImageRef imageRef = [ShrinkPNG newShrinkedImageWithCGImage:[image CGImage]];
+            CGImageRef imageRef = [ShrinkPNG newShrinkedImageWithCGImage:[imageToShrink CGImage]];
             shrinkedImage = [UIImage imageWithCGImage:imageRef];
             CGImageRelease(imageRef);
         }
