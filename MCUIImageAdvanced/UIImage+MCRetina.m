@@ -494,7 +494,7 @@
         cache.name = @"[UIImage imageNamedRetina:tintColor:overlayName:shadowName:]";
     });
     
-    NSString* key = [NSString stringWithFormat:@"%@-%@-%@-%@", name, tintColor, overlayName, shadowName];
+    id key = @[name ?: [NSNull null], tintColor, overlayName ?: [NSNull null], shadowName ?: [NSNull null]];
     UIImage* image = [cache objectForKey:key];
     
     if (image == nil) {
@@ -504,44 +504,100 @@
             return nil;
         }
         
-        UIImage* originalImage = image;
-        
-        CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
-        UIGraphicsBeginImageContextWithOptions(image.size, NO, 0.0f);
-        
-        // Tint image
-        [tintColor set];
-        UIRectFill(rect);
-        [image drawInRect:rect blendMode:kCGBlendModeDestinationIn alpha:1.0f];
-        
-        // Add overlay
-        UIImage* imageOverlay = [UIImage imageNamedRetina:overlayName useMemoryCache:YES logLoadError:NO inDirectory:nil];
-        if ((imageOverlay != nil)) {
-            [imageOverlay drawInRect:rect blendMode:overlayBlendMode alpha:1.0f];
-        }
-        
-        // Add shadow
-        UIImage* imageShadow = [UIImage imageNamedRetina:shadowName useMemoryCache:YES logLoadError:NO inDirectory:nil];
-        if ((imageShadow != nil)) {
-            image = UIGraphicsGetImageFromCurrentImageContext();
-            CGContextClearRect(UIGraphicsGetCurrentContext(), rect);
+        if ([image respondsToSelector:@selector(imageAsset)]) {
+            UIImageAsset *imageAsset = [[UIImageAsset alloc] init];
+            UITraitCollection *scale = [UITraitCollection traitCollectionWithDisplayScale:image.scale];
+            UITraitCollection *idiom = [UITraitCollection traitCollectionWithUserInterfaceIdiom:[[UIDevice currentDevice] userInterfaceIdiom]];
+            UITraitCollection *horizontalCompact = [UITraitCollection traitCollectionWithHorizontalSizeClass:UIUserInterfaceSizeClassCompact];
+            UITraitCollection *horizontalRegular = [UITraitCollection traitCollectionWithHorizontalSizeClass:UIUserInterfaceSizeClassRegular];
+            UITraitCollection *verticalCompact = [UITraitCollection traitCollectionWithVerticalSizeClass:UIUserInterfaceSizeClassCompact];
+            UITraitCollection *verticalRegular = [UITraitCollection traitCollectionWithVerticalSizeClass:UIUserInterfaceSizeClassRegular];
             
-            [imageShadow drawInRect:rect];
-            [image drawInRect:rect blendMode:kCGBlendModeNormal alpha:1.0f];
-        }
-        
-        image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        // Add resizing
-        if (!UIEdgeInsetsEqualToEdgeInsets(originalImage.capInsets, UIEdgeInsetsZero)) {
-            image = [image resizableImageWithCapInsets:originalImage.capInsets resizingMode:originalImage.resizingMode];
+            // Generate tinted Any/Any image
+            UITraitCollection *anyAnyTraitCollection = [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom]];
+            UIImage *anyAnyImage = [self mrg_tintImage:image tintColor:tintColor overlayBlendMode:overlayBlendMode overlayName:overlayName shadowName:shadowName traitCollection:anyAnyTraitCollection];
+            [imageAsset registerImage:anyAnyImage withTraitCollection:anyAnyTraitCollection];
+            
+            // Generate all other combinations of images *if they are available*
+            NSArray *traitCollections =
+            @[
+              [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalCompact]],
+              [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalRegular]],
+              [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, verticalCompact]],
+              [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, verticalRegular]],
+              [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalCompact, verticalCompact]],
+              [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalCompact, verticalRegular]],
+              [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalRegular, verticalCompact]],
+              [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalRegular, verticalRegular]],
+              ];
+            
+            for (UITraitCollection *traitCollection in traitCollections) {
+                UIImage *traitImage = [image.imageAsset imageWithTraitCollection:traitCollection];
+                if ([traitImage.traitCollection isEqual:traitCollection]) {
+                    traitImage = [self mrg_tintImage:image tintColor:tintColor overlayBlendMode:overlayBlendMode overlayName:overlayName shadowName:shadowName traitCollection:traitCollection];
+                    [imageAsset registerImage:traitImage withTraitCollection:traitCollection];
+                }
+            }
+            
+            image = [imageAsset imageWithTraitCollection:image.traitCollection];
+            
+        } else {
+            image = [self mrg_tintImage:image tintColor:tintColor overlayBlendMode:overlayBlendMode overlayName:overlayName shadowName:shadowName traitCollection:nil];
         }
         
         // Cache image
         if ((image != nil)) {
             [cache setObject:image forKey:key];
         }
+    }
+    
+    return image;
+}
+
++ (UIImage *)mrg_tintImage:(UIImage *)originalImage tintColor:(UIColor *)tintColor overlayBlendMode:(CGBlendMode)overlayBlendMode overlayName:(NSString *)overlayName shadowName:(NSString *)shadowName traitCollection:(UITraitCollection *)traitCollection
+{
+    if (traitCollection != nil) {
+        originalImage = [originalImage.imageAsset imageWithTraitCollection:traitCollection];
+    }
+    
+    CGRect rect = CGRectMake(0, 0, originalImage.size.width, originalImage.size.height);
+    UIGraphicsBeginImageContextWithOptions(originalImage.size, NO, 0.0f);
+    
+    // Tint image
+    [tintColor set];
+    UIRectFill(rect);
+    [originalImage drawInRect:rect blendMode:kCGBlendModeDestinationIn alpha:1.0f];
+    
+    // Add overlay
+    UIImage* imageOverlay = [UIImage imageNamedRetina:overlayName useMemoryCache:YES logLoadError:NO inDirectory:nil];
+    if (imageOverlay != nil) {
+        if (traitCollection != nil) {
+            imageOverlay = [imageOverlay.imageAsset imageWithTraitCollection:traitCollection];
+        }
+        
+        [imageOverlay drawInRect:rect blendMode:overlayBlendMode alpha:1.0f];
+    }
+    
+    // Add shadow
+    UIImage* imageShadow = [UIImage imageNamedRetina:shadowName useMemoryCache:YES logLoadError:NO inDirectory:nil];
+    if (imageShadow != nil) {
+        if (traitCollection != nil) {
+            imageShadow = [imageShadow.imageAsset imageWithTraitCollection:traitCollection];
+        }
+
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        CGContextClearRect(UIGraphicsGetCurrentContext(), rect);
+        
+        [imageShadow drawInRect:rect];
+        [image drawInRect:rect blendMode:kCGBlendModeNormal alpha:1.0f];
+    }
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    // Add resizing
+    if (!UIEdgeInsetsEqualToEdgeInsets(originalImage.capInsets, UIEdgeInsetsZero)) {
+        image = [image resizableImageWithCapInsets:originalImage.capInsets resizingMode:originalImage.resizingMode];
     }
     
     return image;
