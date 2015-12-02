@@ -1,0 +1,1 @@
+../../../../../MCUIImageAdvanced/UIImage+MCAdvanced.h
