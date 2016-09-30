@@ -32,3 +32,4 @@
 #import "UIImage+MCRetina.h"
 #import "UIImage+MCRounded.h"
 #import "UIImage+MCImageGeneration.h"
+#import "UIImage+ProportionalFill.h"
