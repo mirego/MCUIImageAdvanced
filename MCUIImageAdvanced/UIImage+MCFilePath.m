@@ -79,6 +79,10 @@
 
 + (UIImage *)imageFromFilePath:(NSString *)path tintColor:(UIColor *)tintColor
 {
+    if ([path length] == 0) {
+        return nil;
+    }
+    
     if (tintColor == nil) {
         tintColor = [UIColor whiteColor];
     }
