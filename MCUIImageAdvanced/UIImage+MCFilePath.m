@@ -62,6 +62,8 @@
         
         // Check if image was loaded
         if (image != nil) {
+            image = [UIImage imageWithCGImage:[image CGImage] scale:[[UIScreen mainScreen] scale] orientation:[image imageOrientation]];
+            
             // Cache image
             if (useMemoryCache) {
                 [imageCache setObject:image forKey:path];
