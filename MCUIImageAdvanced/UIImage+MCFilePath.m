@@ -121,7 +121,7 @@
 + (UIImage *)mrg_tintImage:(UIImage *)originalImage tintColor:(UIColor *)tintColor
 {
     CGRect rect = CGRectMake(0, 0, originalImage.size.width, originalImage.size.height);
-    UIGraphicsBeginImageContextWithOptions(originalImage.size, NO, 0.0f);
+    UIGraphicsBeginImageContextWithOptions(originalImage.size, NO, originalImage.scale);
     
     // Tint image
     [tintColor set];
