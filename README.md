@@ -137,7 +137,7 @@ Don't forget to `#import "UIImage+MCAdvanced.h"` where it's needed.
 
 ## License
 
-MCUIImageAdvanced is © 2013-2015 [Mirego](http://www.mirego.com) and may be freely
+MCUIImageAdvanced is © 2013-2017 [Mirego](http://www.mirego.com) and may be freely
 distributed under the [New BSD license](http://opensource.org/licenses/BSD-3-Clause).
 See the [`LICENSE`](https://github.com/mirego/MCUIImageAdvanced/blob/master/LICENSE) file.
 
