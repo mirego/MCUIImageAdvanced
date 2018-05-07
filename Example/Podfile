@@ -1,9 +1,11 @@
 source 'https://github.com/CocoaPods/Specs.git'
+source 'git@github.com:mirego/MCPodSpecs.git'
+platform :ios, '8.0'
 
-target 'MCUIImageAdvanced_Example', :exclusive => true do
-  pod "MCUIImageAdvanced", :path => "../"
-end
+target 'MCUIImageAdvanced_Example' do
+  pod 'MCUIImageAdvanced', :path => '../'
 
-target 'MCUIImageAdvanced_Tests', :exclusive => true do
-  pod "MCUIImageAdvanced", :path => "../"
+  target 'MCUIImageAdvanced_Tests' do
+    inherit! :search_paths
+  end
 end
