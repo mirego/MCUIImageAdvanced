@@ -43,12 +43,12 @@
 /** Create an image resulting of a blend of the main image and all
  *  given layers.
  *
- *  @param The main image on which every layers are drawn.
- *  @param Each item is a layer of type UIColor or UIImage.
+ *  @param image The main image on which every layers are drawn.
+ *  @param layers Each item is a layer of type UIColor or UIImage.
  *         The last item is the top most layer.
  *         Use the UIColor alpha value to control the transparency.
  *
- *  @param Array allowing to override the default blend mode for every layers.
+ *  @param blendModes Array allowing to override the default blend mode for every layers.
  *         Use NSNumber with int values.
  *
  *         If the item quantity is lower than the layer array, the default blend
@@ -60,7 +60,7 @@
  *         If the item quantity is higher to the layer array, the last items are
  *         ignored and the default blend mode is also ignored.
  *
- *  @param Default blend mode used when not specified for a layer in the array.
+ *  @param defaultBlendMode Default blend mode used when not specified for a layer in the array.
  *         Not used if a blend mode is specified for every layers.
  */
 + (UIImage *)blendedImageWithImage:(UIImage *)image
