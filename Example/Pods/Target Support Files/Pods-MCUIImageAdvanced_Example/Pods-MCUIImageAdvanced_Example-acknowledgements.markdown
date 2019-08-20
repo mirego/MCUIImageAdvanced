@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## MCUIImageAdvanced
 
-Copyright (c) 2013-2018, Mirego
+Copyright (c) 2013-2019, Mirego
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

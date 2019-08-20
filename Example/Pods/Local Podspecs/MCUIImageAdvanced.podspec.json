@@ -1,6 +1,6 @@
 {
   "name": "MCUIImageAdvanced",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "summary": "Advanced and powerful functionality enhancements to UIImage.",
   "homepage": "https://github.com/mirego/MCUIImageAdvanced",
   "license": "BSD 3-Clause",
@@ -9,7 +9,7 @@
   },
   "source": {
     "git": "https://github.com/mirego/MCUIImageAdvanced.git",
-    "tag": "1.1.3"
+    "tag": "1.1.4"
   },
   "social_media_url": "https://twitter.com/Mirego",
   "platforms": {

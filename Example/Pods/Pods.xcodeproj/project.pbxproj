@@ -7,317 +7,308 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01941715AA9399B5E36B8AA5B9D7264C /* ShrinkPNG.h in Headers */ = {isa = PBXBuildFile; fileRef = 96FA5B9CC86872D4DE5392588DB1FC1E /* ShrinkPNG.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		096D13CE6F4D69824CD133FC0294F5E6 /* UIImage+MCBlending.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CF563495E9101D00B6E7273AB3143 /* UIImage+MCBlending.m */; };
-		1A61EDDCDEDF2D483832099A6E4BBAFA /* UIImage+MCAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5449BC110FA918C01F80891D814D2 /* UIImage+MCAnimation.m */; };
-		1BF925CBFBAA12AFA8DCF5413E9416FD /* ShrinkPNG.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B1822C3A9BA14E3EDEF001775E1D60 /* ShrinkPNG.m */; };
-		22DFC131E0D5066CA64DE0805166ED3C /* MCUIImageAdvanced-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BE8BFE1D47D79F891968B747478B5F19 /* MCUIImageAdvanced-dummy.m */; };
-		236DAC26DFEC25593A5324FE31076F25 /* UIImage+MCRounded.h in Headers */ = {isa = PBXBuildFile; fileRef = 074594CBCA4A5DB0615AC301CD8AFB40 /* UIImage+MCRounded.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		2C550E3A25FFAF633A889D81FFA99524 /* UIImage+MCBlending.h in Headers */ = {isa = PBXBuildFile; fileRef = AA0B52738F5392E7387DA4931B6F8E30 /* UIImage+MCBlending.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		2E01A0F54C1DD92C30161CFD7C26E949 /* UIImage+MCFilePath.h in Headers */ = {isa = PBXBuildFile; fileRef = 15D85F67852507BF8D8CB0C2DA720839 /* UIImage+MCFilePath.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		30B434FCAB2AAB0951B4A910D6503536 /* Pods-MCUIImageAdvanced_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 34AC3869BFC5BE2E541C7B802678746B /* Pods-MCUIImageAdvanced_Example-dummy.m */; };
-		3AA1BC4BFDC16F276744DF9918CA21A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		5FC6F49937D8FD15442E4C4D34DB1BE2 /* Pods-MCUIImageAdvanced_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7791B28B2A55A90F70492A6E7EC4D4 /* Pods-MCUIImageAdvanced_Tests-dummy.m */; };
-		602A84499427F0DEC2F162E8BCA6B1E7 /* UIImage+MCImageGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = 74664F245364B5E099DDBE108B5EEF8D /* UIImage+MCImageGeneration.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		70579EFEB6F5B85D955D8CB53E1B49B8 /* UIImage+MCAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 358179A640E71BEA9EBA0CBA157AE45D /* UIImage+MCAnimation.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		864ED83033F49238D6004FF54369DAA2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		8BED802519E363BAD87A04F0B9C0B726 /* UIImage+MCRetina.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A456F2CC40981759B52B9C21C8464D4 /* UIImage+MCRetina.m */; };
-		8CCD0EB3484A86AE0775BDF06CD7023F /* UIImage+MCFilePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A7DD3C38545E55D120FFB4DCDC35FB /* UIImage+MCFilePath.m */; };
-		9E2AD09C3E8AF68229325AC6C73999F2 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = FC5822758E27EEA8DBF2F8F9D241C931 /* UIImage+ProportionalFill.m */; };
-		B010931586937CA194F5602F412FB7A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		BBB3020714A8AF006CDBC666A324DCA4 /* UIImage+ProportionalFill.h in Headers */ = {isa = PBXBuildFile; fileRef = ED89FE5BF16D0187B38B8FB61A5FA582 /* UIImage+ProportionalFill.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		C2A1173278DA86857518B3AA91CA71DE /* UIImage+MCImageGeneration.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B351A4C93981F43930732D595178DDC /* UIImage+MCImageGeneration.m */; };
-		D82F153A699144B15E97E1CB6B96B947 /* UIImage+MCRounded.m in Sources */ = {isa = PBXBuildFile; fileRef = 08436F70B80D275D99780D5B358DB5EF /* UIImage+MCRounded.m */; };
-		DBC8A4C0B8895189032B246A27C657F6 /* UIImage+MCRetina.h in Headers */ = {isa = PBXBuildFile; fileRef = 57A7BC9D48EFF3372A7CA29243D2C576 /* UIImage+MCRetina.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		E43D2530488F33ECC8D5DD455CAB9820 /* UIImage+MCAdvanced.h in Headers */ = {isa = PBXBuildFile; fileRef = DF72BF2F96C79B5E0BE2753F155A0041 /* UIImage+MCAdvanced.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		0EA26D72CEFD6B1E816385DF700181DF /* ShrinkPNG.h in Headers */ = {isa = PBXBuildFile; fileRef = E144D15410DF4421E8ACCC3403E44F07 /* ShrinkPNG.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		14CCC2849E85B1772026934E5BF73098 /* UIImage+MCAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1D0CAC4AC2FA857CA13F37C108F9DA /* UIImage+MCAnimation.m */; };
+		216D3D1D7575B8D67C5F3A414F25675A /* UIImage+MCAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = DF4595341C855D4ED194A9CEBC2B8D32 /* UIImage+MCAnimation.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		36D5ADD1F2F8BB2AB7D1CA09F809A2BF /* UIImage+MCRetina.m in Sources */ = {isa = PBXBuildFile; fileRef = 87520FCF3F2E4E6CDA588C328CCA72D3 /* UIImage+MCRetina.m */; };
+		3E4A55CF17B4CBF244CECC7BC079B5F7 /* UIImage+MCBlending.m in Sources */ = {isa = PBXBuildFile; fileRef = 39745D778D3675A25E80527180980D23 /* UIImage+MCBlending.m */; };
+		46DFD82E81AEE863C550BD1144F521F1 /* UIImage+MCRounded.h in Headers */ = {isa = PBXBuildFile; fileRef = A76CD8AA5730FA51110671958657597C /* UIImage+MCRounded.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		57CC733394A6D18A1B84CC530164E334 /* UIImage+MCAdvanced.h in Headers */ = {isa = PBXBuildFile; fileRef = BB418C27B422128361318516ACF3E628 /* UIImage+MCAdvanced.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		5F538BFA9CF62D189B94DE1C4AEDEA2B /* Pods-MCUIImageAdvanced_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 24AA92497CA0A0878B843162F022EC74 /* Pods-MCUIImageAdvanced_Example-dummy.m */; };
+		6BDFEFE0B491E554BA9F34381FA9EA36 /* UIImage+MCImageGeneration.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFC9AEF134FA463EDD287B5B913FCB8 /* UIImage+MCImageGeneration.m */; };
+		78B608C1DEB2B89DAD2949E0C1793C7D /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 870DE596EAC2AD2589D819894796C463 /* UIImage+ProportionalFill.m */; };
+		846795D4985DE37BECF553EE81098D95 /* UIImage+ProportionalFill.h in Headers */ = {isa = PBXBuildFile; fileRef = 42F2B8701EE589546E7EA8B9105A6C16 /* UIImage+ProportionalFill.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		850E52E4A9C004F5E4083DCDF7640F85 /* ShrinkPNG.m in Sources */ = {isa = PBXBuildFile; fileRef = 8116403AB48626AA661FE4A4084DDAF3 /* ShrinkPNG.m */; };
+		94F157D7FA71FE1FE1E10B3848C08854 /* UIImage+MCFilePath.h in Headers */ = {isa = PBXBuildFile; fileRef = ECD8BC6DFC1375D65DBCB68142D10830 /* UIImage+MCFilePath.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		A7981515F0EA23943C8E216C5ABC0DAF /* UIImage+MCRounded.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED1C0271B175D315678878A70488FF4 /* UIImage+MCRounded.m */; };
+		BC6E9E6D541CE6D44BC8F72196DA0B6F /* UIImage+MCBlending.h in Headers */ = {isa = PBXBuildFile; fileRef = 815249D99CEA1BA37637D853447524C6 /* UIImage+MCBlending.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		D3C2630ED9F883324218338B890D3B75 /* UIImage+MCFilePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F8F4996FDD036D72B111C9CAF9AAE9 /* UIImage+MCFilePath.m */; };
+		EDBCF7559981B3C5CDDA21EFE11F5922 /* Pods-MCUIImageAdvanced_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4733EB22F1B9A19B23AA1C9B834181 /* Pods-MCUIImageAdvanced_Tests-dummy.m */; };
+		EDF47813066EB7FA24A6A7353E2B3270 /* MCUIImageAdvanced-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C895AD0FDA9EF305BEC8D9A0342C8BB /* MCUIImageAdvanced-dummy.m */; };
+		F108B77DDD46DB9A7F3CDC682AB2F200 /* UIImage+MCImageGeneration.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A92041DD6F51AB9F9D7EC3E7FA19847 /* UIImage+MCImageGeneration.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F6CBFE64967C1F2A3F439B46275AD424 /* UIImage+MCRetina.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AECC4B85225E4E8AAC4F652D14F597C /* UIImage+MCRetina.h */; settings = {ATTRIBUTES = (Project, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4DADEC1AF199B589EE099678FB99DF08 /* PBXContainerItemProxy */ = {
+		91C750A351D941ED288ADB7BEBEFBF4F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1170A23D0DF2334762F7063ABB6B90B9;
+			remoteGlobalIDString = A4279A5DD802E243223588BD799E6ADF;
 			remoteInfo = MCUIImageAdvanced;
 		};
-		DBA5BB5D5D4BABC91B13031C2ACDDDBC /* PBXContainerItemProxy */ = {
+		F04AF8B5B989498C44890406B9BA1A5A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C273679AF4740D19E2D6691FDA195AAE;
+			remoteGlobalIDString = B2E7CA7D8F56ADCC12A5DC22D82F5776;
 			remoteInfo = "Pods-MCUIImageAdvanced_Example";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06A7DD3C38545E55D120FFB4DCDC35FB /* UIImage+MCFilePath.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MCFilePath.m"; path = "MCUIImageAdvanced/UIImage+MCFilePath.m"; sourceTree = "<group>"; };
-		074594CBCA4A5DB0615AC301CD8AFB40 /* UIImage+MCRounded.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MCRounded.h"; path = "MCUIImageAdvanced/UIImage+MCRounded.h"; sourceTree = "<group>"; };
-		08436F70B80D275D99780D5B358DB5EF /* UIImage+MCRounded.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MCRounded.m"; path = "MCUIImageAdvanced/UIImage+MCRounded.m"; sourceTree = "<group>"; };
-		1160EC8C4886C6E1BEEC69B0D855172E /* Pods-MCUIImageAdvanced_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MCUIImageAdvanced_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		15D85F67852507BF8D8CB0C2DA720839 /* UIImage+MCFilePath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MCFilePath.h"; path = "MCUIImageAdvanced/UIImage+MCFilePath.h"; sourceTree = "<group>"; };
-		1E16D8AEAF9DF115F79A428EC890A119 /* Pods-MCUIImageAdvanced_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MCUIImageAdvanced_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		1FD23AEAD3E7AADBFBADFB22AA904720 /* libPods-MCUIImageAdvanced_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-MCUIImageAdvanced_Example.a"; path = "libPods-MCUIImageAdvanced_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		32122BDAF1667D92A98C91839F690FB2 /* Pods-MCUIImageAdvanced_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MCUIImageAdvanced_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		34AC3869BFC5BE2E541C7B802678746B /* Pods-MCUIImageAdvanced_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MCUIImageAdvanced_Example-dummy.m"; sourceTree = "<group>"; };
-		358179A640E71BEA9EBA0CBA157AE45D /* UIImage+MCAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MCAnimation.h"; path = "MCUIImageAdvanced/UIImage+MCAnimation.h"; sourceTree = "<group>"; };
-		45E02F843B844687B3E355F861127966 /* Pods-MCUIImageAdvanced_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MCUIImageAdvanced_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		487FCB839FC9B4D55646BDE59FCB5789 /* libPods-MCUIImageAdvanced_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-MCUIImageAdvanced_Tests.a"; path = "libPods-MCUIImageAdvanced_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DDF82DD11A110B6639EF35AB606816C /* Pods-MCUIImageAdvanced_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MCUIImageAdvanced_Example.release.xcconfig"; sourceTree = "<group>"; };
-		57A7BC9D48EFF3372A7CA29243D2C576 /* UIImage+MCRetina.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MCRetina.h"; path = "MCUIImageAdvanced/UIImage+MCRetina.h"; sourceTree = "<group>"; };
-		5F3CF563495E9101D00B6E7273AB3143 /* UIImage+MCBlending.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MCBlending.m"; path = "MCUIImageAdvanced/UIImage+MCBlending.m"; sourceTree = "<group>"; };
-		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		683CC0B6C3D9C86171CD9CAAFBAE5522 /* Pods-MCUIImageAdvanced_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MCUIImageAdvanced_Tests-resources.sh"; sourceTree = "<group>"; };
-		74664F245364B5E099DDBE108B5EEF8D /* UIImage+MCImageGeneration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MCImageGeneration.h"; path = "MCUIImageAdvanced/UIImage+MCImageGeneration.h"; sourceTree = "<group>"; };
-		7A456F2CC40981759B52B9C21C8464D4 /* UIImage+MCRetina.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MCRetina.m"; path = "MCUIImageAdvanced/UIImage+MCRetina.m"; sourceTree = "<group>"; };
-		9030FD0EF43C770C808C4C0136DB80D3 /* MCUIImageAdvanced-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MCUIImageAdvanced-prefix.pch"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		956164D49EF83220DACB9B9018DFDBD0 /* Pods-MCUIImageAdvanced_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MCUIImageAdvanced_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		96FA5B9CC86872D4DE5392588DB1FC1E /* ShrinkPNG.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ShrinkPNG.h; sourceTree = "<group>"; };
-		97314B48EA0C9E017A8D192F32762216 /* MCUIImageAdvanced.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = MCUIImageAdvanced.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9B351A4C93981F43930732D595178DDC /* UIImage+MCImageGeneration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MCImageGeneration.m"; path = "MCUIImageAdvanced/UIImage+MCImageGeneration.m"; sourceTree = "<group>"; };
-		9F102E3F7483A2F54793632BC9344A51 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		A054D2D5D5AD8FEF43ABA77CAAE45CA9 /* Pods-MCUIImageAdvanced_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MCUIImageAdvanced_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		A1B1822C3A9BA14E3EDEF001775E1D60 /* ShrinkPNG.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ShrinkPNG.m; sourceTree = "<group>"; };
-		A1B5449BC110FA918C01F80891D814D2 /* UIImage+MCAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MCAnimation.m"; path = "MCUIImageAdvanced/UIImage+MCAnimation.m"; sourceTree = "<group>"; };
-		AA0B52738F5392E7387DA4931B6F8E30 /* UIImage+MCBlending.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MCBlending.h"; path = "MCUIImageAdvanced/UIImage+MCBlending.h"; sourceTree = "<group>"; };
-		BC130A30F23234CDAB5EAB9DA02B4DE1 /* Pods-MCUIImageAdvanced_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MCUIImageAdvanced_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		BD7791B28B2A55A90F70492A6E7EC4D4 /* Pods-MCUIImageAdvanced_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MCUIImageAdvanced_Tests-dummy.m"; sourceTree = "<group>"; };
-		BE8BFE1D47D79F891968B747478B5F19 /* MCUIImageAdvanced-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MCUIImageAdvanced-dummy.m"; sourceTree = "<group>"; };
-		C1F3DAB9DB1A20BD0831F52E2B65523B /* libMCUIImageAdvanced.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMCUIImageAdvanced.a; path = libMCUIImageAdvanced.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C5F756A97E7E595BA566208DC610A914 /* Pods-MCUIImageAdvanced_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MCUIImageAdvanced_Example-frameworks.sh"; sourceTree = "<group>"; };
-		DF72BF2F96C79B5E0BE2753F155A0041 /* UIImage+MCAdvanced.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MCAdvanced.h"; path = "MCUIImageAdvanced/UIImage+MCAdvanced.h"; sourceTree = "<group>"; };
-		E64D9DF8F92B4E5FF5F23FDBDA509CCE /* Pods-MCUIImageAdvanced_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MCUIImageAdvanced_Example-resources.sh"; sourceTree = "<group>"; };
-		E6950C136E66D78D8F53D67410D5E8C1 /* MCUIImageAdvanced.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MCUIImageAdvanced.xcconfig; sourceTree = "<group>"; };
-		ED89FE5BF16D0187B38B8FB61A5FA582 /* UIImage+ProportionalFill.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIImage+ProportionalFill.h"; sourceTree = "<group>"; };
-		F04E2BAB7E1295485C38790A123224F7 /* Pods-MCUIImageAdvanced_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MCUIImageAdvanced_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F33FF601C3E7BAD6F2ADEEC7E25CC035 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		FC5822758E27EEA8DBF2F8F9D241C931 /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
+		0F4733EB22F1B9A19B23AA1C9B834181 /* Pods-MCUIImageAdvanced_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MCUIImageAdvanced_Tests-dummy.m"; sourceTree = "<group>"; };
+		11CBB41CACCE7EED92CA13E9823BB4D0 /* Pods-MCUIImageAdvanced_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MCUIImageAdvanced_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		15CE8E1436DCDD9590E1C9485F0DCD2E /* Pods-MCUIImageAdvanced_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MCUIImageAdvanced_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		1BF49C63B8ED96E759CE3A1014FF25D7 /* Pods-MCUIImageAdvanced_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MCUIImageAdvanced_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		24AA92497CA0A0878B843162F022EC74 /* Pods-MCUIImageAdvanced_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MCUIImageAdvanced_Example-dummy.m"; sourceTree = "<group>"; };
+		29B316EB52EC3BB043224A12960A0B5A /* MCUIImageAdvanced.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MCUIImageAdvanced.xcconfig; sourceTree = "<group>"; };
+		2FE7FECB8EC6E454DE53976B092C3552 /* MCUIImageAdvanced.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = MCUIImageAdvanced.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		37F8F4996FDD036D72B111C9CAF9AAE9 /* UIImage+MCFilePath.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MCFilePath.m"; path = "MCUIImageAdvanced/UIImage+MCFilePath.m"; sourceTree = "<group>"; };
+		39745D778D3675A25E80527180980D23 /* UIImage+MCBlending.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MCBlending.m"; path = "MCUIImageAdvanced/UIImage+MCBlending.m"; sourceTree = "<group>"; };
+		42F2B8701EE589546E7EA8B9105A6C16 /* UIImage+ProportionalFill.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIImage+ProportionalFill.h"; sourceTree = "<group>"; };
+		4301FFB867A49D1656C422E8E53FFBC4 /* Pods-MCUIImageAdvanced_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MCUIImageAdvanced_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		45F0D118E3263F217D3C52DC63FA53F2 /* MCUIImageAdvanced-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MCUIImageAdvanced-prefix.pch"; sourceTree = "<group>"; };
+		4E1D0CAC4AC2FA857CA13F37C108F9DA /* UIImage+MCAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MCAnimation.m"; path = "MCUIImageAdvanced/UIImage+MCAnimation.m"; sourceTree = "<group>"; };
+		58DCDFF3400BB3F28D38487239743AEC /* Pods-MCUIImageAdvanced_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MCUIImageAdvanced_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		5AECC4B85225E4E8AAC4F652D14F597C /* UIImage+MCRetina.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MCRetina.h"; path = "MCUIImageAdvanced/UIImage+MCRetina.h"; sourceTree = "<group>"; };
+		6C895AD0FDA9EF305BEC8D9A0342C8BB /* MCUIImageAdvanced-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MCUIImageAdvanced-dummy.m"; sourceTree = "<group>"; };
+		6D22BC3A01E0F565A802BA16AF404880 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		6D43893396FE0C2C76820C60A807E130 /* libPods-MCUIImageAdvanced_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-MCUIImageAdvanced_Example.a"; path = "libPods-MCUIImageAdvanced_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A92041DD6F51AB9F9D7EC3E7FA19847 /* UIImage+MCImageGeneration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MCImageGeneration.h"; path = "MCUIImageAdvanced/UIImage+MCImageGeneration.h"; sourceTree = "<group>"; };
+		8116403AB48626AA661FE4A4084DDAF3 /* ShrinkPNG.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ShrinkPNG.m; sourceTree = "<group>"; };
+		815249D99CEA1BA37637D853447524C6 /* UIImage+MCBlending.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MCBlending.h"; path = "MCUIImageAdvanced/UIImage+MCBlending.h"; sourceTree = "<group>"; };
+		870DE596EAC2AD2589D819894796C463 /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
+		87520FCF3F2E4E6CDA588C328CCA72D3 /* UIImage+MCRetina.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MCRetina.m"; path = "MCUIImageAdvanced/UIImage+MCRetina.m"; sourceTree = "<group>"; };
+		8ED1C0271B175D315678878A70488FF4 /* UIImage+MCRounded.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MCRounded.m"; path = "MCUIImageAdvanced/UIImage+MCRounded.m"; sourceTree = "<group>"; };
+		97724797E9409A403321F1131E13EFD3 /* Pods-MCUIImageAdvanced_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MCUIImageAdvanced_Example.release.xcconfig"; sourceTree = "<group>"; };
+		9835DC20A2E0FF253FD62C8F5E771534 /* libMCUIImageAdvanced.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMCUIImageAdvanced.a; path = libMCUIImageAdvanced.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A76CD8AA5730FA51110671958657597C /* UIImage+MCRounded.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MCRounded.h"; path = "MCUIImageAdvanced/UIImage+MCRounded.h"; sourceTree = "<group>"; };
+		A7E2D5EAC8D0DCD127FD4252004E2DB5 /* Pods-MCUIImageAdvanced_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MCUIImageAdvanced_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		BB418C27B422128361318516ACF3E628 /* UIImage+MCAdvanced.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MCAdvanced.h"; path = "MCUIImageAdvanced/UIImage+MCAdvanced.h"; sourceTree = "<group>"; };
+		CEFC9AEF134FA463EDD287B5B913FCB8 /* UIImage+MCImageGeneration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MCImageGeneration.m"; path = "MCUIImageAdvanced/UIImage+MCImageGeneration.m"; sourceTree = "<group>"; };
+		DD7A9D02FAAE211902FFBFB9C1BE03C6 /* libPods-MCUIImageAdvanced_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-MCUIImageAdvanced_Tests.a"; path = "libPods-MCUIImageAdvanced_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF4595341C855D4ED194A9CEBC2B8D32 /* UIImage+MCAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MCAnimation.h"; path = "MCUIImageAdvanced/UIImage+MCAnimation.h"; sourceTree = "<group>"; };
+		E144D15410DF4421E8ACCC3403E44F07 /* ShrinkPNG.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = ShrinkPNG.h; sourceTree = "<group>"; };
+		E6223431EB7F7C64D18AC9625248E50C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		ECD8BC6DFC1375D65DBCB68142D10830 /* UIImage+MCFilePath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MCFilePath.h"; path = "MCUIImageAdvanced/UIImage+MCFilePath.h"; sourceTree = "<group>"; };
+		F8BE3E699DDE606803D8DE7B5419B10E /* Pods-MCUIImageAdvanced_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MCUIImageAdvanced_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4FE1B7B88FB5E41B8624E66BFA937A77 /* Frameworks */ = {
+		00D743E3F7DB2589E041296D271134FD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				864ED83033F49238D6004FF54369DAA2 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A2FEEDBE93A52EFAC31EA473E701C313 /* Frameworks */ = {
+		29A3C6F45BB05B3755CB00D4AF7A8B3A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AA1BC4BFDC16F276744DF9918CA21A9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FFBBA84E49B342A76753025591E6767E /* Frameworks */ = {
+		C61417A97E12B9D73919DFC13E76B5AF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B010931586937CA194F5602F412FB7A9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		26E86133B79FAB20A59B37C19E06F99B /* Pods-MCUIImageAdvanced_Example */ = {
+		165AC546D4D6871DA09489AB3B8B29AD /* ShrinkPNG */ = {
 			isa = PBXGroup;
 			children = (
-				1E16D8AEAF9DF115F79A428EC890A119 /* Pods-MCUIImageAdvanced_Example-acknowledgements.markdown */,
-				1160EC8C4886C6E1BEEC69B0D855172E /* Pods-MCUIImageAdvanced_Example-acknowledgements.plist */,
-				34AC3869BFC5BE2E541C7B802678746B /* Pods-MCUIImageAdvanced_Example-dummy.m */,
-				C5F756A97E7E595BA566208DC610A914 /* Pods-MCUIImageAdvanced_Example-frameworks.sh */,
-				E64D9DF8F92B4E5FF5F23FDBDA509CCE /* Pods-MCUIImageAdvanced_Example-resources.sh */,
-				32122BDAF1667D92A98C91839F690FB2 /* Pods-MCUIImageAdvanced_Example.debug.xcconfig */,
-				4DDF82DD11A110B6639EF35AB606816C /* Pods-MCUIImageAdvanced_Example.release.xcconfig */,
-			);
-			name = "Pods-MCUIImageAdvanced_Example";
-			path = "Target Support Files/Pods-MCUIImageAdvanced_Example";
-			sourceTree = "<group>";
-		};
-		59207C1622F2BE47B7C52473115519C8 /* ShrinkPNG */ = {
-			isa = PBXGroup;
-			children = (
-				96FA5B9CC86872D4DE5392588DB1FC1E /* ShrinkPNG.h */,
-				A1B1822C3A9BA14E3EDEF001775E1D60 /* ShrinkPNG.m */,
+				E144D15410DF4421E8ACCC3403E44F07 /* ShrinkPNG.h */,
+				8116403AB48626AA661FE4A4084DDAF3 /* ShrinkPNG.m */,
 			);
 			name = ShrinkPNG;
 			path = MCUIImageAdvanced/ShrinkPNG;
 			sourceTree = "<group>";
 		};
-		74BA3A7DE63E40A94F1597591CA20F49 /* Targets Support Files */ = {
+		2D18CDBFCEEAC6C003E7233745E55359 /* Pods-MCUIImageAdvanced_Tests */ = {
 			isa = PBXGroup;
 			children = (
-				26E86133B79FAB20A59B37C19E06F99B /* Pods-MCUIImageAdvanced_Example */,
-				F0783DF864D232AB958E76E0E9D31B5B /* Pods-MCUIImageAdvanced_Tests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		7B812B8EF1136B889A9B9781FFB8DDAE /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				9F102E3F7483A2F54793632BC9344A51 /* LICENSE */,
-				97314B48EA0C9E017A8D192F32762216 /* MCUIImageAdvanced.podspec */,
-				F33FF601C3E7BAD6F2ADEEC7E25CC035 /* README.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		7DB346D0F39D3F0E887471402A8071AB = {
-			isa = PBXGroup;
-			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				82BC147EB6E71CA14FD5BF7BAEB41097 /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				EF2E5EF1CC2087BBEBC9F5822157AB58 /* Products */,
-				74BA3A7DE63E40A94F1597591CA20F49 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		82BC147EB6E71CA14FD5BF7BAEB41097 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				83C77EF4169CA83336584620E92124B4 /* MCUIImageAdvanced */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		83C77EF4169CA83336584620E92124B4 /* MCUIImageAdvanced */ = {
-			isa = PBXGroup;
-			children = (
-				DF72BF2F96C79B5E0BE2753F155A0041 /* UIImage+MCAdvanced.h */,
-				358179A640E71BEA9EBA0CBA157AE45D /* UIImage+MCAnimation.h */,
-				A1B5449BC110FA918C01F80891D814D2 /* UIImage+MCAnimation.m */,
-				AA0B52738F5392E7387DA4931B6F8E30 /* UIImage+MCBlending.h */,
-				5F3CF563495E9101D00B6E7273AB3143 /* UIImage+MCBlending.m */,
-				15D85F67852507BF8D8CB0C2DA720839 /* UIImage+MCFilePath.h */,
-				06A7DD3C38545E55D120FFB4DCDC35FB /* UIImage+MCFilePath.m */,
-				74664F245364B5E099DDBE108B5EEF8D /* UIImage+MCImageGeneration.h */,
-				9B351A4C93981F43930732D595178DDC /* UIImage+MCImageGeneration.m */,
-				57A7BC9D48EFF3372A7CA29243D2C576 /* UIImage+MCRetina.h */,
-				7A456F2CC40981759B52B9C21C8464D4 /* UIImage+MCRetina.m */,
-				074594CBCA4A5DB0615AC301CD8AFB40 /* UIImage+MCRounded.h */,
-				08436F70B80D275D99780D5B358DB5EF /* UIImage+MCRounded.m */,
-				DDCF7C5B52977D21E72EA80828BECAA0 /* MGImageUtilities */,
-				7B812B8EF1136B889A9B9781FFB8DDAE /* Pod */,
-				59207C1622F2BE47B7C52473115519C8 /* ShrinkPNG */,
-				F4AD4957DEB05D6D2518CA9A156ADD97 /* Support Files */,
-			);
-			name = MCUIImageAdvanced;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		DDCF7C5B52977D21E72EA80828BECAA0 /* MGImageUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				ED89FE5BF16D0187B38B8FB61A5FA582 /* UIImage+ProportionalFill.h */,
-				FC5822758E27EEA8DBF2F8F9D241C931 /* UIImage+ProportionalFill.m */,
-			);
-			name = MGImageUtilities;
-			path = MCUIImageAdvanced/MGImageUtilities;
-			sourceTree = "<group>";
-		};
-		EF2E5EF1CC2087BBEBC9F5822157AB58 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C1F3DAB9DB1A20BD0831F52E2B65523B /* libMCUIImageAdvanced.a */,
-				1FD23AEAD3E7AADBFBADFB22AA904720 /* libPods-MCUIImageAdvanced_Example.a */,
-				487FCB839FC9B4D55646BDE59FCB5789 /* libPods-MCUIImageAdvanced_Tests.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		F0783DF864D232AB958E76E0E9D31B5B /* Pods-MCUIImageAdvanced_Tests */ = {
-			isa = PBXGroup;
-			children = (
-				F04E2BAB7E1295485C38790A123224F7 /* Pods-MCUIImageAdvanced_Tests-acknowledgements.markdown */,
-				45E02F843B844687B3E355F861127966 /* Pods-MCUIImageAdvanced_Tests-acknowledgements.plist */,
-				BD7791B28B2A55A90F70492A6E7EC4D4 /* Pods-MCUIImageAdvanced_Tests-dummy.m */,
-				956164D49EF83220DACB9B9018DFDBD0 /* Pods-MCUIImageAdvanced_Tests-frameworks.sh */,
-				683CC0B6C3D9C86171CD9CAAFBAE5522 /* Pods-MCUIImageAdvanced_Tests-resources.sh */,
-				A054D2D5D5AD8FEF43ABA77CAAE45CA9 /* Pods-MCUIImageAdvanced_Tests.debug.xcconfig */,
-				BC130A30F23234CDAB5EAB9DA02B4DE1 /* Pods-MCUIImageAdvanced_Tests.release.xcconfig */,
+				11CBB41CACCE7EED92CA13E9823BB4D0 /* Pods-MCUIImageAdvanced_Tests-acknowledgements.markdown */,
+				A7E2D5EAC8D0DCD127FD4252004E2DB5 /* Pods-MCUIImageAdvanced_Tests-acknowledgements.plist */,
+				0F4733EB22F1B9A19B23AA1C9B834181 /* Pods-MCUIImageAdvanced_Tests-dummy.m */,
+				58DCDFF3400BB3F28D38487239743AEC /* Pods-MCUIImageAdvanced_Tests.debug.xcconfig */,
+				F8BE3E699DDE606803D8DE7B5419B10E /* Pods-MCUIImageAdvanced_Tests.release.xcconfig */,
 			);
 			name = "Pods-MCUIImageAdvanced_Tests";
 			path = "Target Support Files/Pods-MCUIImageAdvanced_Tests";
 			sourceTree = "<group>";
 		};
-		F4AD4957DEB05D6D2518CA9A156ADD97 /* Support Files */ = {
+		2FAA78C2AEE2C024A0919ED2C7E2BFFD /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				E6950C136E66D78D8F53D67410D5E8C1 /* MCUIImageAdvanced.xcconfig */,
-				BE8BFE1D47D79F891968B747478B5F19 /* MCUIImageAdvanced-dummy.m */,
-				9030FD0EF43C770C808C4C0136DB80D3 /* MCUIImageAdvanced-prefix.pch */,
+				6D22BC3A01E0F565A802BA16AF404880 /* LICENSE */,
+				2FE7FECB8EC6E454DE53976B092C3552 /* MCUIImageAdvanced.podspec */,
+				E6223431EB7F7C64D18AC9625248E50C /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		4D198C39390AE50D6DB5C714DA306D99 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8D215420C2CA48830C4CB277E8470A1F /* Pods-MCUIImageAdvanced_Example */,
+				2D18CDBFCEEAC6C003E7233745E55359 /* Pods-MCUIImageAdvanced_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		787FD9D3D68506F092E289D1863BFFE3 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9F119759E138AB12A6631E8B7C582C12 /* MCUIImageAdvanced */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		8D215420C2CA48830C4CB277E8470A1F /* Pods-MCUIImageAdvanced_Example */ = {
+			isa = PBXGroup;
+			children = (
+				1BF49C63B8ED96E759CE3A1014FF25D7 /* Pods-MCUIImageAdvanced_Example-acknowledgements.markdown */,
+				4301FFB867A49D1656C422E8E53FFBC4 /* Pods-MCUIImageAdvanced_Example-acknowledgements.plist */,
+				24AA92497CA0A0878B843162F022EC74 /* Pods-MCUIImageAdvanced_Example-dummy.m */,
+				15CE8E1436DCDD9590E1C9485F0DCD2E /* Pods-MCUIImageAdvanced_Example.debug.xcconfig */,
+				97724797E9409A403321F1131E13EFD3 /* Pods-MCUIImageAdvanced_Example.release.xcconfig */,
+			);
+			name = "Pods-MCUIImageAdvanced_Example";
+			path = "Target Support Files/Pods-MCUIImageAdvanced_Example";
+			sourceTree = "<group>";
+		};
+		9F119759E138AB12A6631E8B7C582C12 /* MCUIImageAdvanced */ = {
+			isa = PBXGroup;
+			children = (
+				BB418C27B422128361318516ACF3E628 /* UIImage+MCAdvanced.h */,
+				DF4595341C855D4ED194A9CEBC2B8D32 /* UIImage+MCAnimation.h */,
+				4E1D0CAC4AC2FA857CA13F37C108F9DA /* UIImage+MCAnimation.m */,
+				815249D99CEA1BA37637D853447524C6 /* UIImage+MCBlending.h */,
+				39745D778D3675A25E80527180980D23 /* UIImage+MCBlending.m */,
+				ECD8BC6DFC1375D65DBCB68142D10830 /* UIImage+MCFilePath.h */,
+				37F8F4996FDD036D72B111C9CAF9AAE9 /* UIImage+MCFilePath.m */,
+				7A92041DD6F51AB9F9D7EC3E7FA19847 /* UIImage+MCImageGeneration.h */,
+				CEFC9AEF134FA463EDD287B5B913FCB8 /* UIImage+MCImageGeneration.m */,
+				5AECC4B85225E4E8AAC4F652D14F597C /* UIImage+MCRetina.h */,
+				87520FCF3F2E4E6CDA588C328CCA72D3 /* UIImage+MCRetina.m */,
+				A76CD8AA5730FA51110671958657597C /* UIImage+MCRounded.h */,
+				8ED1C0271B175D315678878A70488FF4 /* UIImage+MCRounded.m */,
+				D7820ABE99A1AB3B39E98E8BE7E114F2 /* MGImageUtilities */,
+				2FAA78C2AEE2C024A0919ED2C7E2BFFD /* Pod */,
+				165AC546D4D6871DA09489AB3B8B29AD /* ShrinkPNG */,
+				B0FB6D0E730745389D57413CB1E2D96D /* Support Files */,
+			);
+			name = MCUIImageAdvanced;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		AFB98FD7E6074AA2FDD75E9744449979 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9835DC20A2E0FF253FD62C8F5E771534 /* libMCUIImageAdvanced.a */,
+				6D43893396FE0C2C76820C60A807E130 /* libPods-MCUIImageAdvanced_Example.a */,
+				DD7A9D02FAAE211902FFBFB9C1BE03C6 /* libPods-MCUIImageAdvanced_Tests.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B0FB6D0E730745389D57413CB1E2D96D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				29B316EB52EC3BB043224A12960A0B5A /* MCUIImageAdvanced.xcconfig */,
+				6C895AD0FDA9EF305BEC8D9A0342C8BB /* MCUIImageAdvanced-dummy.m */,
+				45F0D118E3263F217D3C52DC63FA53F2 /* MCUIImageAdvanced-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/MCUIImageAdvanced";
 			sourceTree = "<group>";
 		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				787FD9D3D68506F092E289D1863BFFE3 /* Development Pods */,
+				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
+				AFB98FD7E6074AA2FDD75E9744449979 /* Products */,
+				4D198C39390AE50D6DB5C714DA306D99 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D7820ABE99A1AB3B39E98E8BE7E114F2 /* MGImageUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				42F2B8701EE589546E7EA8B9105A6C16 /* UIImage+ProportionalFill.h */,
+				870DE596EAC2AD2589D819894796C463 /* UIImage+ProportionalFill.m */,
+			);
+			name = MGImageUtilities;
+			path = MCUIImageAdvanced/MGImageUtilities;
+			sourceTree = "<group>";
+		};
+		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		E86499B71D56E3F423F54ABF4D56707B /* Headers */ = {
+		447BD358FBB9BDFE0BC82A94025C7C58 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01941715AA9399B5E36B8AA5B9D7264C /* ShrinkPNG.h in Headers */,
-				E43D2530488F33ECC8D5DD455CAB9820 /* UIImage+MCAdvanced.h in Headers */,
-				70579EFEB6F5B85D955D8CB53E1B49B8 /* UIImage+MCAnimation.h in Headers */,
-				2C550E3A25FFAF633A889D81FFA99524 /* UIImage+MCBlending.h in Headers */,
-				2E01A0F54C1DD92C30161CFD7C26E949 /* UIImage+MCFilePath.h in Headers */,
-				602A84499427F0DEC2F162E8BCA6B1E7 /* UIImage+MCImageGeneration.h in Headers */,
-				DBC8A4C0B8895189032B246A27C657F6 /* UIImage+MCRetina.h in Headers */,
-				236DAC26DFEC25593A5324FE31076F25 /* UIImage+MCRounded.h in Headers */,
-				BBB3020714A8AF006CDBC666A324DCA4 /* UIImage+ProportionalFill.h in Headers */,
+				0EA26D72CEFD6B1E816385DF700181DF /* ShrinkPNG.h in Headers */,
+				57CC733394A6D18A1B84CC530164E334 /* UIImage+MCAdvanced.h in Headers */,
+				216D3D1D7575B8D67C5F3A414F25675A /* UIImage+MCAnimation.h in Headers */,
+				BC6E9E6D541CE6D44BC8F72196DA0B6F /* UIImage+MCBlending.h in Headers */,
+				94F157D7FA71FE1FE1E10B3848C08854 /* UIImage+MCFilePath.h in Headers */,
+				F108B77DDD46DB9A7F3CDC682AB2F200 /* UIImage+MCImageGeneration.h in Headers */,
+				F6CBFE64967C1F2A3F439B46275AD424 /* UIImage+MCRetina.h in Headers */,
+				46DFD82E81AEE863C550BD1144F521F1 /* UIImage+MCRounded.h in Headers */,
+				846795D4985DE37BECF553EE81098D95 /* UIImage+ProportionalFill.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		908729E57FA1F737EE89FE6AB6A1DD1E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D6F9B984F2ECA0D0B14002619A17E51 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		09C992ECE30DA92587B2F32B6CE91299 /* Pods-MCUIImageAdvanced_Tests */ = {
+		7B56B65C09754C7BA77704E9BDE1B850 /* Pods-MCUIImageAdvanced_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9919B25FF957F6BC3C06C8BCD9E902CA /* Build configuration list for PBXNativeTarget "Pods-MCUIImageAdvanced_Tests" */;
+			buildConfigurationList = BEE23C4266959014D1290A485630197D /* Build configuration list for PBXNativeTarget "Pods-MCUIImageAdvanced_Tests" */;
 			buildPhases = (
-				623D24DC6D01C271D964FDFAA145B11E /* Sources */,
-				FFBBA84E49B342A76753025591E6767E /* Frameworks */,
+				9D6F9B984F2ECA0D0B14002619A17E51 /* Headers */,
+				DAE01D65FFAD7FC49D71CDCC703A8A3D /* Sources */,
+				C61417A97E12B9D73919DFC13E76B5AF /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				91DD04189D081233B15BA968CBB248FE /* PBXTargetDependency */,
+				9C99ABB988B6F6D405EC0407A7D5F9F6 /* PBXTargetDependency */,
 			);
 			name = "Pods-MCUIImageAdvanced_Tests";
 			productName = "Pods-MCUIImageAdvanced_Tests";
-			productReference = 487FCB839FC9B4D55646BDE59FCB5789 /* libPods-MCUIImageAdvanced_Tests.a */;
+			productReference = DD7A9D02FAAE211902FFBFB9C1BE03C6 /* libPods-MCUIImageAdvanced_Tests.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		1170A23D0DF2334762F7063ABB6B90B9 /* MCUIImageAdvanced */ = {
+		A4279A5DD802E243223588BD799E6ADF /* MCUIImageAdvanced */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E6FE321FA77729D6E9A75976759B1C1F /* Build configuration list for PBXNativeTarget "MCUIImageAdvanced" */;
+			buildConfigurationList = 1A48BDFCA35A0EF589F66046F322498D /* Build configuration list for PBXNativeTarget "MCUIImageAdvanced" */;
 			buildPhases = (
-				51BB6565056AF1BF5BF9573EB1C7FB34 /* Sources */,
-				A2FEEDBE93A52EFAC31EA473E701C313 /* Frameworks */,
-				E86499B71D56E3F423F54ABF4D56707B /* Headers */,
+				447BD358FBB9BDFE0BC82A94025C7C58 /* Headers */,
+				D673772D91CFCAEB566C043C3ECB0A67 /* Sources */,
+				00D743E3F7DB2589E041296D271134FD /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -325,106 +316,152 @@
 			);
 			name = MCUIImageAdvanced;
 			productName = MCUIImageAdvanced;
-			productReference = C1F3DAB9DB1A20BD0831F52E2B65523B /* libMCUIImageAdvanced.a */;
+			productReference = 9835DC20A2E0FF253FD62C8F5E771534 /* libMCUIImageAdvanced.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		C273679AF4740D19E2D6691FDA195AAE /* Pods-MCUIImageAdvanced_Example */ = {
+		B2E7CA7D8F56ADCC12A5DC22D82F5776 /* Pods-MCUIImageAdvanced_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2AF891727560C39033AD870F74AC6D5C /* Build configuration list for PBXNativeTarget "Pods-MCUIImageAdvanced_Example" */;
+			buildConfigurationList = EC659A9E04223F42AA990E146E94EF92 /* Build configuration list for PBXNativeTarget "Pods-MCUIImageAdvanced_Example" */;
 			buildPhases = (
-				8241DAE25B2EBDCD3AD56DE5E692E9D4 /* Sources */,
-				4FE1B7B88FB5E41B8624E66BFA937A77 /* Frameworks */,
+				908729E57FA1F737EE89FE6AB6A1DD1E /* Headers */,
+				CE0F2F26C8D9DD5D616941206BCC0736 /* Sources */,
+				29A3C6F45BB05B3755CB00D4AF7A8B3A /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A4EB1AF01384E35A55CC8DD68793D269 /* PBXTargetDependency */,
+				C25E6A0D9FE4FE6D0B970DBD5BEDC77E /* PBXTargetDependency */,
 			);
 			name = "Pods-MCUIImageAdvanced_Example";
 			productName = "Pods-MCUIImageAdvanced_Example";
-			productReference = 1FD23AEAD3E7AADBFBADFB22AA904720 /* libPods-MCUIImageAdvanced_Example.a */;
+			productReference = 6D43893396FE0C2C76820C60A807E130 /* libPods-MCUIImageAdvanced_Example.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
 			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = EF2E5EF1CC2087BBEBC9F5822157AB58 /* Products */;
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = AFB98FD7E6074AA2FDD75E9744449979 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1170A23D0DF2334762F7063ABB6B90B9 /* MCUIImageAdvanced */,
-				C273679AF4740D19E2D6691FDA195AAE /* Pods-MCUIImageAdvanced_Example */,
-				09C992ECE30DA92587B2F32B6CE91299 /* Pods-MCUIImageAdvanced_Tests */,
+				A4279A5DD802E243223588BD799E6ADF /* MCUIImageAdvanced */,
+				B2E7CA7D8F56ADCC12A5DC22D82F5776 /* Pods-MCUIImageAdvanced_Example */,
+				7B56B65C09754C7BA77704E9BDE1B850 /* Pods-MCUIImageAdvanced_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		51BB6565056AF1BF5BF9573EB1C7FB34 /* Sources */ = {
+		CE0F2F26C8D9DD5D616941206BCC0736 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22DFC131E0D5066CA64DE0805166ED3C /* MCUIImageAdvanced-dummy.m in Sources */,
-				1BF925CBFBAA12AFA8DCF5413E9416FD /* ShrinkPNG.m in Sources */,
-				1A61EDDCDEDF2D483832099A6E4BBAFA /* UIImage+MCAnimation.m in Sources */,
-				096D13CE6F4D69824CD133FC0294F5E6 /* UIImage+MCBlending.m in Sources */,
-				8CCD0EB3484A86AE0775BDF06CD7023F /* UIImage+MCFilePath.m in Sources */,
-				C2A1173278DA86857518B3AA91CA71DE /* UIImage+MCImageGeneration.m in Sources */,
-				8BED802519E363BAD87A04F0B9C0B726 /* UIImage+MCRetina.m in Sources */,
-				D82F153A699144B15E97E1CB6B96B947 /* UIImage+MCRounded.m in Sources */,
-				9E2AD09C3E8AF68229325AC6C73999F2 /* UIImage+ProportionalFill.m in Sources */,
+				5F538BFA9CF62D189B94DE1C4AEDEA2B /* Pods-MCUIImageAdvanced_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		623D24DC6D01C271D964FDFAA145B11E /* Sources */ = {
+		D673772D91CFCAEB566C043C3ECB0A67 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FC6F49937D8FD15442E4C4D34DB1BE2 /* Pods-MCUIImageAdvanced_Tests-dummy.m in Sources */,
+				EDF47813066EB7FA24A6A7353E2B3270 /* MCUIImageAdvanced-dummy.m in Sources */,
+				850E52E4A9C004F5E4083DCDF7640F85 /* ShrinkPNG.m in Sources */,
+				14CCC2849E85B1772026934E5BF73098 /* UIImage+MCAnimation.m in Sources */,
+				3E4A55CF17B4CBF244CECC7BC079B5F7 /* UIImage+MCBlending.m in Sources */,
+				D3C2630ED9F883324218338B890D3B75 /* UIImage+MCFilePath.m in Sources */,
+				6BDFEFE0B491E554BA9F34381FA9EA36 /* UIImage+MCImageGeneration.m in Sources */,
+				36D5ADD1F2F8BB2AB7D1CA09F809A2BF /* UIImage+MCRetina.m in Sources */,
+				A7981515F0EA23943C8E216C5ABC0DAF /* UIImage+MCRounded.m in Sources */,
+				78B608C1DEB2B89DAD2949E0C1793C7D /* UIImage+ProportionalFill.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8241DAE25B2EBDCD3AD56DE5E692E9D4 /* Sources */ = {
+		DAE01D65FFAD7FC49D71CDCC703A8A3D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30B434FCAB2AAB0951B4A910D6503536 /* Pods-MCUIImageAdvanced_Example-dummy.m in Sources */,
+				EDBCF7559981B3C5CDDA21EFE11F5922 /* Pods-MCUIImageAdvanced_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		91DD04189D081233B15BA968CBB248FE /* PBXTargetDependency */ = {
+		9C99ABB988B6F6D405EC0407A7D5F9F6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-MCUIImageAdvanced_Example";
-			target = C273679AF4740D19E2D6691FDA195AAE /* Pods-MCUIImageAdvanced_Example */;
-			targetProxy = DBA5BB5D5D4BABC91B13031C2ACDDDBC /* PBXContainerItemProxy */;
+			target = B2E7CA7D8F56ADCC12A5DC22D82F5776 /* Pods-MCUIImageAdvanced_Example */;
+			targetProxy = F04AF8B5B989498C44890406B9BA1A5A /* PBXContainerItemProxy */;
 		};
-		A4EB1AF01384E35A55CC8DD68793D269 /* PBXTargetDependency */ = {
+		C25E6A0D9FE4FE6D0B970DBD5BEDC77E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MCUIImageAdvanced;
-			target = 1170A23D0DF2334762F7063ABB6B90B9 /* MCUIImageAdvanced */;
-			targetProxy = 4DADEC1AF199B589EE099678FB99DF08 /* PBXContainerItemProxy */;
+			target = A4279A5DD802E243223588BD799E6ADF /* MCUIImageAdvanced */;
+			targetProxy = 91C750A351D941ED288ADB7BEBEFBF4F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1EE19F5DD95931924296F637BF18BD8F /* Debug */ = {
+		36AEECFD63266F446534E696A533F0A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8BE3E699DDE606803D8DE7B5419B10E /* Pods-MCUIImageAdvanced_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4A6BCEF032CDB5246F28444A04CB2D7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29B316EB52EC3BB043224A12960A0B5A /* MCUIImageAdvanced.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/MCUIImageAdvanced/MCUIImageAdvanced-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = MCUIImageAdvanced;
+				PRODUCT_NAME = MCUIImageAdvanced;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4BE66A09A74FD25164AAB3C2645B9B93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -456,8 +493,66 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		7EF7227D9B20A1D549000096ACCB23D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -478,18 +573,43 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		39016284439AD4842B7BC0AE4DACD8F5 /* Release */ = {
+		882800D40C1434BF8443607742DE3BDF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E6950C136E66D78D8F53D67410D5E8C1 /* MCUIImageAdvanced.xcconfig */;
+			baseConfigurationReference = 97724797E9409A403321F1131E13EFD3 /* Pods-MCUIImageAdvanced_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BF22F42AF46E55052C826217C53B5329 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29B316EB52EC3BB043224A12960A0B5A /* MCUIImageAdvanced.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -511,9 +631,9 @@
 			};
 			name = Release;
 		};
-		49D084086D4F2438557D70AD6C9F8128 /* Debug */ = {
+		CD641026883AC18BAED80CDB6D30C48D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32122BDAF1667D92A98C91839F690FB2 /* Pods-MCUIImageAdvanced_Example.debug.xcconfig */;
+			baseConfigurationReference = 15CE8E1436DCDD9590E1C9485F0DCD2E /* Pods-MCUIImageAdvanced_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -532,9 +652,9 @@
 			};
 			name = Debug;
 		};
-		7A1FD5D99F76B67095A0CF820895C471 /* Debug */ = {
+		EC172ECF83114E85A448775FEA6B0AA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A054D2D5D5AD8FEF43ABA77CAAE45CA9 /* Pods-MCUIImageAdvanced_Tests.debug.xcconfig */;
+			baseConfigurationReference = 58DCDFF3400BB3F28D38487239743AEC /* Pods-MCUIImageAdvanced_Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -552,172 +672,47 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
-		};
-		7CF2413F2F468B4E29FDE4EFCF7B7B2D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4DDF82DD11A110B6639EF35AB606816C /* Pods-MCUIImageAdvanced_Example.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		8B380F2F330FBD59331D590EE2E70363 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC130A30F23234CDAB5EAB9DA02B4DE1 /* Pods-MCUIImageAdvanced_Tests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		F3BC05DFF2E8B72EB3B54997AFD35FD7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E6950C136E66D78D8F53D67410D5E8C1 /* MCUIImageAdvanced.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/MCUIImageAdvanced/MCUIImageAdvanced-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = MCUIImageAdvanced;
-				PRODUCT_NAME = MCUIImageAdvanced;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		F4568DEE257655D290C2B9CEAB37C934 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2AF891727560C39033AD870F74AC6D5C /* Build configuration list for PBXNativeTarget "Pods-MCUIImageAdvanced_Example" */ = {
+		1A48BDFCA35A0EF589F66046F322498D /* Build configuration list for PBXNativeTarget "MCUIImageAdvanced" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				49D084086D4F2438557D70AD6C9F8128 /* Debug */,
-				7CF2413F2F468B4E29FDE4EFCF7B7B2D /* Release */,
+				4A6BCEF032CDB5246F28444A04CB2D7A /* Debug */,
+				BF22F42AF46E55052C826217C53B5329 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1EE19F5DD95931924296F637BF18BD8F /* Debug */,
-				F4568DEE257655D290C2B9CEAB37C934 /* Release */,
+				7EF7227D9B20A1D549000096ACCB23D7 /* Debug */,
+				4BE66A09A74FD25164AAB3C2645B9B93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9919B25FF957F6BC3C06C8BCD9E902CA /* Build configuration list for PBXNativeTarget "Pods-MCUIImageAdvanced_Tests" */ = {
+		BEE23C4266959014D1290A485630197D /* Build configuration list for PBXNativeTarget "Pods-MCUIImageAdvanced_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7A1FD5D99F76B67095A0CF820895C471 /* Debug */,
-				8B380F2F330FBD59331D590EE2E70363 /* Release */,
+				EC172ECF83114E85A448775FEA6B0AA1 /* Debug */,
+				36AEECFD63266F446534E696A533F0A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E6FE321FA77729D6E9A75976759B1C1F /* Build configuration list for PBXNativeTarget "MCUIImageAdvanced" */ = {
+		EC659A9E04223F42AA990E146E94EF92 /* Build configuration list for PBXNativeTarget "Pods-MCUIImageAdvanced_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F3BC05DFF2E8B72EB3B54997AFD35FD7 /* Debug */,
-				39016284439AD4842B7BC0AE4DACD8F5 /* Release */,
+				CD641026883AC18BAED80CDB6D30C48D /* Debug */,
+				882800D40C1434BF8443607742DE3BDF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 }
