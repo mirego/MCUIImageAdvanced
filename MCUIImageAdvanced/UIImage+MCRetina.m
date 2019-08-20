@@ -519,15 +519,15 @@
             // Generate all other combinations of images *if they are available*
             NSArray *traitCollections =
             @[
-              [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalCompact]],
-              [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalRegular]],
-              [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, verticalCompact]],
-              [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, verticalRegular]],
-              [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalCompact, verticalCompact]],
-              [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalCompact, verticalRegular]],
-              [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalRegular, verticalCompact]],
-              [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalRegular, verticalRegular]],
-              ];
+                [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalCompact]],
+                [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalRegular]],
+                [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, verticalCompact]],
+                [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, verticalRegular]],
+                [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalCompact, verticalCompact]],
+                [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalCompact, verticalRegular]],
+                [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalRegular, verticalCompact]],
+                [UITraitCollection traitCollectionWithTraitsFromCollections:@[scale, idiom, horizontalRegular, verticalRegular]],
+            ];
             
             for (UITraitCollection *traitCollection in traitCollections) {
                 UIImage *traitImage = [image.imageAsset imageWithTraitCollection:traitCollection];
@@ -537,7 +537,10 @@
                 }
             }
             
-            image = [imageAsset imageWithTraitCollection:image.traitCollection];
+            image =
+            [imageAsset imageWithTraitCollection:image.traitCollection] ?:
+            [imageAsset imageWithTraitCollection:anyAnyTraitCollection] ?:
+            anyAnyImage;
             
         } else {
             image = [self mrg_tintImage:image tintColor:tintColor overlayBlendMode:overlayBlendMode overlayName:overlayName shadowName:shadowName traitCollection:nil];
@@ -582,7 +585,7 @@
         if (traitCollection != nil) {
             imageShadow = [imageShadow.imageAsset imageWithTraitCollection:traitCollection];
         }
-
+        
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
         CGContextClearRect(UIGraphicsGetCurrentContext(), rect);
         
