@@ -124,15 +124,25 @@ Keeping it in a memory cache for performance if needed.
 
 ## Adding to your project
 
-If you're using [`CocoaPods`](http://cocoapods.org/), there's nothing simpler.
-Add the following to your [`Podfile`](http://docs.cocoapods.org/podfile.html)
-and run `pod install`
+### Swift Package Manager
+
+In Xcode, go to **File > Add Package Dependencies** and enter the repository URL, or add it directly to your `Package.swift`:
+
+```swift
+.package(url: "https://github.com/mirego/MCUIImageAdvanced.git", from: "1.1.4")
+```
+
+Then `#import <MCUIImageAdvanced/UIImage+MCAdvanced.h>` where it's needed.
+
+### CocoaPods
+
+Add the following to your [`Podfile`](http://docs.cocoapods.org/podfile.html) and run `pod install`:
 
 ```ruby
 pod 'MCUIImageAdvanced', :git => 'https://github.com/mirego/MCUIImageAdvanced.git'
 ```
 
-Don't forget to `#import "UIImage+MCAdvanced.h"` where it's needed.
+Then `#import "UIImage+MCAdvanced.h"` where it's needed.
 
 
 ## License
