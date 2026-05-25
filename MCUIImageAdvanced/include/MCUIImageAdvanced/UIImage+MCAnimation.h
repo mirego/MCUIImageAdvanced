@@ -1,1 +1,0 @@
-../../UIImage+MCAnimation.h
