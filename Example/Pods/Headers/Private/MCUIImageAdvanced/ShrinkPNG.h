@@ -1,1 +1,1 @@
-../../../../../MCUIImageAdvanced/ShrinkPNG/ShrinkPNG.h
+../../../../../Sources/MCUIImageAdvanced/ShrinkPNG.h

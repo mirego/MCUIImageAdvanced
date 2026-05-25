@@ -1,1 +1,1 @@
-../../../../../MCUIImageAdvanced/UIImage+MCImageGeneration.h
+../../../../../Sources/MCUIImageAdvanced/include/UIImage+MCImageGeneration.h

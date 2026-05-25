@@ -17,5 +17,6 @@
     "tvos": "9.0"
   },
   "requires_arc": true,
-  "source_files": "MCUIImageAdvanced/**/*.{h,m}"
+  "source_files": "Sources/MCUIImageAdvanced/**/*.{h,m}",
+  "public_header_files": "Sources/MCUIImageAdvanced/include/*.h"
 }
