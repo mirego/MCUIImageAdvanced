@@ -13,9 +13,10 @@
   },
   "social_media_url": "https://twitter.com/Mirego",
   "platforms": {
-    "ios": "8.0",
-    "tvos": "9.0"
+    "ios": "12.0",
+    "tvos": "12.0"
   },
   "requires_arc": true,
-  "source_files": "MCUIImageAdvanced/**/*.{h,m}"
+  "source_files": "Sources/MCUIImageAdvanced/**/*.{h,m}",
+  "public_header_files": "Sources/MCUIImageAdvanced/include/*.h"
 }

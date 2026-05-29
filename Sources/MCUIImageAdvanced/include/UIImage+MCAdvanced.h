@@ -27,9 +27,10 @@
 //  POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "UIImage+MCAnimation.h"
-#import "UIImage+MCBlending.h"
-#import "UIImage+MCRetina.h"
-#import "UIImage+MCRounded.h"
-#import "UIImage+MCImageGeneration.h"
-#import "UIImage+ProportionalFill.h"
+#import <MCUIImageAdvanced/UIImage+MCAnimation.h>
+#import <MCUIImageAdvanced/UIImage+MCBlending.h>
+#import <MCUIImageAdvanced/UIImage+MCRetina.h>
+#import <MCUIImageAdvanced/UIImage+MCRounded.h>
+#import <MCUIImageAdvanced/UIImage+MCImageGeneration.h>
+#import <MCUIImageAdvanced/UIImage+MCFilePath.h>
+#import <MCUIImageAdvanced/UIImage+ProportionalFill.h>

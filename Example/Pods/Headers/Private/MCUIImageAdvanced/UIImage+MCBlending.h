@@ -1,1 +1,1 @@
-../../../../../MCUIImageAdvanced/UIImage+MCBlending.h
+../../../../../Sources/MCUIImageAdvanced/include/UIImage+MCBlending.h
